@@ -1,0 +1,91 @@
+.container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 2rem;
+    font-family: 'Playfair', serif;
+}
+
+.header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.logoImage {
+    width: 300px;
+    height: auto;
+    border-radius: 10%;
+}
+
+.logoText {
+    font-family: 'Playfair', serif;
+    font-size: 40px;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #847B77;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.divider {
+    width: 60px;
+    height: 2px;
+    background-color: #d4af37;
+    /* Gold color */
+}
+
+.title {
+    font-family: 'Playfair', serif;
+    font-size: 2rem;
+    font-style: italic;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    color: #847B77;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.description {
+    max-width: 600px;
+    font-size: 20px;
+    line-height: 1.8;
+    font-weight: 300;
+    color: #847B77;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+
+
+.footer {
+    margin-top: 4rem;
+    font-size: 1rem;
+    color: #847B77;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    letter-spacing: 0.05em;
+}
+
+@media (max-width: 768px) {
+    .logoText {
+        font-size: 32px;
+    }
+
+    .logoImage {
+        width: 220px;
+    }
+
+    .title {
+        font-size: 1.5rem;
+    }
+
+    .description {
+        font-size: 20px;
+        max-width: 90%;
+    }
+
+    .footer {
+        font-size: 0.9rem;
+    }
+}

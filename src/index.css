@@ -1,0 +1,13 @@
+:root {
+  font-family: 'Playfair', serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color: #587C70;
+  background-color: #d4f8e8;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
