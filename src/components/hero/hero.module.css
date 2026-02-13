@@ -1,0 +1,22 @@
+.hero {
+    display: flex;
+    background-color: #b9d5cc;
+    height: 500px;
+}
+.logo {
+    width: 100px;
+    height: auto;
+    margin-bottom: 1rem;
+}
+.brand {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    margin:  auto;
+    border: 1px solid #0000008c;
+    background-color: #0000003f;
+    color: #ffffff;
+    border-radius: 8px;
+}

@@ -3,9 +3,10 @@
   line-height: 1.5;
   font-weight: 400;
 
-  color: #587C70;
-  background-color: #d4f8e8;
-
+  /* color: #587C70; */
+  color: #847B77;
+  background-color: #fff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;

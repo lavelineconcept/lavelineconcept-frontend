@@ -1,0 +1,111 @@
+.navbar {
+  border-bottom: 2px solid #587C70;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: "Playfair", serif;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.brandName {
+  flex: 1;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.brandName a {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #847b77;
+  text-decoration: none;
+  letter-spacing: 0.05em;
+  transition: color 0.3s ease;
+}
+
+.brandName a:hover {
+  color: #d4af37;
+}
+
+.navLinks {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  font-family: "Playfair", serif;
+
+}
+
+.navLinks a {
+  color: #587c70;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  position: relative;
+  padding: 0.5rem 0;
+}
+
+.navLinks a:hover {
+  color: #d4af37;
+}
+
+.navLinks a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #d4af37;
+  transition: width 0.3s ease;
+}
+
+.navLinks a:hover::after {
+  width: 100%;
+}
+
+.cartLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0 !important;
+  margin-left: 0.5rem;
+}
+
+.cartLink svg {
+  width: 24px;
+  height: 24px;
+  stroke: #587c70;
+  transition: stroke 0.3s ease;
+}
+
+.cartLink:hover svg {
+  stroke: #d4af37;
+}
+
+.cartLink::after {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  .brandName {
+    flex: none;
+  }
+
+  .navLinks {
+    gap: 1rem;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .navLinks a {
+    font-size: 0.9rem;
+  }
+}
