@@ -1,4 +1,4 @@
-import logo from '../../assets/lavelineconcept-logosmall.png';
+import logo from '../../assets/laveline-yazılı-logo-nobackground.png';
 import styles from './ComingSoon.module.css';
 
 const ComingSoon = () => {
