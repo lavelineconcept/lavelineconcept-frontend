@@ -1,0 +1,46 @@
+.weStory {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 40px 20px;
+    background-color: #d5f1e7;
+}
+.textContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.title {
+    font-size: 48px;
+    font-weight: bold;
+    color: #587C70;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+}
+.description {
+    font-size: 18px;
+    color: #587C70;
+    line-height: 1.6;
+}
+.button {
+    margin: 24px auto;
+    padding: 12px 24px;
+    background-color: #587C70;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+    justify-content: center;
+}
+.button:hover {
+    background-color: #3e5c56;
+}
+
+.logo {
+    width: 500px;
+    height: auto;
+}
