@@ -1,0 +1,8 @@
+.visionMissionContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 50px 20px;
+  background-color: #fff9ef;
+  justify-content: space-around;
+}
