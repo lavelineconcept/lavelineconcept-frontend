@@ -7,7 +7,7 @@ export default function WeStory() {
     <>
       <section className={css.weStory}>
         <div className={css.textContainer}>
-          <h2 className={css.title}>Bizim Hikayemiz</h2>
+          <h2 className={css.title}>Hikayemiz Burada Başlıyor</h2>
           <p className={css.description}>
             La Véline Concept, hikayemiz burada yazacak. Devamı için butana
             basın.

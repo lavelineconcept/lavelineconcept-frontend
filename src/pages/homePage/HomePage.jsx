@@ -4,6 +4,7 @@ import Categories from "../../components/categories/categories";
 import LastAdded from "../../components/lastAdded/lastAdded";
 import Subscription from "../../components/subscription/subscription";
 import WeStory from "../../components/weStory/weStory";
+import Privileges from "../../components/privileges/privileges";
 
 export default function HomePage() {
   return (
@@ -14,6 +15,7 @@ export default function HomePage() {
       <LastAdded />
       <Subscription />
       <WeStory />
+      <Privileges />
     </>
   );
 }
