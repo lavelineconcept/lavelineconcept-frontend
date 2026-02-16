@@ -6,6 +6,7 @@ import Subscription from "../../components/subscription/subscription";
 import WeStory from "../../components/weStory/weStory";
 import Privileges from "../../components/privileges/privileges";
 import VisionMission from "../../components/visionAndMission/visionMission";
+import Footer from "../../components/footer/footer";
 
 export default function HomePage() {
   return (
@@ -18,6 +19,7 @@ export default function HomePage() {
       <WeStory />
       <Privileges />
       <VisionMission />
+      <Footer />
     </>
   );
 }
