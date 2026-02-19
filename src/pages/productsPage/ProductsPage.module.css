@@ -1,0 +1,156 @@
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 120px 20px 60px;
+}
+
+.header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    margin-bottom: 60px;
+}
+
+@media (min-width: 768px) {
+    .header {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-end;
+    }
+}
+
+.title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    color: #587c70;
+}
+
+.searchContainer {
+    width: 100%;
+    max-width: 400px;
+}
+
+.searchInput {
+    width: 100%;
+    padding: 12px 20px;
+    border: 1px solid #e0e0e0;
+    border-radius: 50px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    background-color: #fcfbf7;
+}
+
+.searchInput:focus {
+    outline: none;
+    border-color: #587c70;
+    box-shadow: 0 4px 15px rgba(88, 124, 112, 0.1);
+}
+
+.layout {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+@media (min-width: 768px) {
+    .layout {
+        flex-direction: row;
+    }
+}
+
+.sidebar {
+    flex: 0 0 220px;
+}
+
+.main {
+    flex: 1;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+@media (min-width: 1024px) {
+    .grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+    }
+}
+
+.empty {
+    text-align: center;
+    padding: 100px 0;
+    color: #847b77;
+    font-style: italic;
+}
+
+/* Pagination */
+.pagination {
+    margin-top: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.pageBtn {
+    padding: 10px 25px;
+    background: transparent;
+    border: 1px solid #587c70;
+    color: #587c70;
+    border-radius: 50px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.pageBtn:hover:not(:disabled) {
+    background-color: #587c70;
+    color: white;
+}
+
+.pageBtn:disabled {
+    border-color: #e0e0e0;
+    color: #e0e0e0;
+    cursor: not-allowed;
+}
+
+.pageIndicator {
+    font-family: 'Inter', sans-serif;
+    color: #847b77;
+    font-weight: 500;
+}
+
+.loadingContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 100px 0;
+    color: #847b77;
+    gap: 20px;
+}
+
+.loader {
+    width: 30px;
+    height: 30px;
+    border: 2px solid #fcfbf7;
+    border-top: 2px solid #587c70;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}

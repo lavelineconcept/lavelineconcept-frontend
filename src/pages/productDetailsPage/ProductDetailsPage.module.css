@@ -1,0 +1,296 @@
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 120px 20px 60px;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+@media (min-width: 1024px) {
+    .content {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+}
+
+.gallery {
+    flex: 1.2;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.mainImageWrapper {
+    aspect-ratio: 4/5;
+    background-color: #fcfbf7;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.05);
+}
+
+.mainImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.thumbnails {
+    display: flex;
+    gap: 15px;
+    overflow-x: auto;
+    padding-bottom: 5px;
+}
+
+.thumb {
+    width: 80px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 8px;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.activeThumb {
+    border-color: #587c70;
+}
+
+.info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.brand {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    color: #847b77;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+.title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    color: #587c70;
+    line-height: 1.2;
+}
+
+.price {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 500;
+    color: #587c70;
+}
+
+.status {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+}
+
+.inStock {
+    color: #587c70;
+    font-weight: 600;
+}
+
+.outOfStock {
+    color: #d9534f;
+    font-weight: 600;
+}
+
+.description h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    color: #587c70;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #f0f0f0;
+    padding-bottom: 10px;
+}
+
+.description p {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: #847b77;
+}
+
+/* Attributes */
+.attrGroup {
+    margin-bottom: 25px;
+}
+
+.attrGroup label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #587c70;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+}
+
+.options {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.optionBtn {
+    padding: 10px 18px;
+    border: 1px solid #e0e0e0;
+    background: white;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    color: #847b77;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.activeOption {
+    border-color: #587c70;
+    background-color: #587c70;
+    color: white;
+    box-shadow: 0 4px 10px rgba(88, 124, 112, 0.2);
+}
+
+.optionBtn:hover:not(.activeOption) {
+    border-color: #587c70;
+    color: #587c70;
+}
+
+/* Actions */
+.actions {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+@media (min-width: 640px) {
+    .actions {
+        flex-direction: row;
+        align-items: center;
+    }
+}
+
+.quantitySelector {
+    display: flex;
+    align-items: center;
+    border: 1px solid #e0e0e0;
+    border-radius: 50px;
+    padding: 5px;
+    width: fit-content;
+}
+
+.qtyBtn {
+    width: 35px;
+    height: 35px;
+    border: none;
+    background: transparent;
+    font-size: 1.2rem;
+    color: #587c70;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.qtyValue {
+    width: 40px;
+    text-align: center;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    color: #587c70;
+}
+
+.addBtn {
+    flex: 2;
+    padding: 18px;
+    background-color: #587c70;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.addBtn:hover {
+    background-color: #4a685e;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(88, 124, 112, 0.2);
+}
+
+.addBtn:disabled {
+    background-color: #b0c4bd;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.wishBtn {
+    flex: 1;
+    padding: 18px;
+    background-color: transparent;
+    color: #847b77;
+    border: 1px solid #e0e0e0;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.wishBtn:hover {
+    border-color: #587c70;
+    color: #587c70;
+}
+
+.inWishlist {
+    border-color: #d9534f;
+    color: #d9534f;
+}
+
+.inWishlist:hover {
+    border-color: #b33935;
+    color: #b33935;
+}
+
+.loadingContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 80vh;
+    color: #847b77;
+    font-family: 'Inter', sans-serif;
+    gap: 20px;
+}
+
+.loader {
+    width: 40px;
+    height: 40px;
+    border: 3px solid #fcfbf7;
+    border-top: 3px solid #587c70;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
