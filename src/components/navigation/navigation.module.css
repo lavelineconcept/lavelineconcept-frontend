@@ -87,6 +87,23 @@
 .cartLink::after {
   display: none;
 }
+.button {
+  background-color: #587c70;
+  color: #ffffff !important;
+  padding: 8px 12px !important;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.button:hover {
+  background-color: #d4af37;
+}
+.buttuon::after {
+  display: none;
+}
 
 @media (max-width: 768px) {
   .navbar {

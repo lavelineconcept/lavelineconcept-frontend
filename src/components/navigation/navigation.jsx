@@ -25,6 +25,7 @@ export default function Navigation() {
               <path d="M15 12v5" />
             </svg>
           </Link>
+          <Link to="/login" className={css.button}>GİRİŞ YAP</Link>
         </div>
       </nav>
     </>
