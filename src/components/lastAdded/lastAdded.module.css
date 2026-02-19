@@ -1,6 +1,11 @@
 .lastAddedSection {
-  padding: 2rem 1rem;
+  padding: 40px 15px;
   background-color: #f9f7f6;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .title {
@@ -8,16 +13,28 @@
   font-weight: 700;
   color: #847b77;
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
   font-family: "Playfair", serif;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
 }
 
 @media (min-width: 768px) {
   .lastAddedSection {
-    padding: 4rem 2rem;
+    padding: 60px 20px;
   }
 
   .title {
     font-size: 48px;
+    margin-bottom: 3.5rem;
+  }
+
+  .grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
   }
 }
