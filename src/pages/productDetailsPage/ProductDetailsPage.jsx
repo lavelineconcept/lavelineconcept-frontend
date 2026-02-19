@@ -6,7 +6,8 @@ import { selectCurrentProduct, selectIsLoading } from "../../redux/products/sele
 import { selectIsLoggedIn } from "../../redux/auth/selectors";
 import { addToCart } from "../../redux/cart/operations";
 import { addToCartLocal } from "../../redux/cart/slice";
-import { addToWishlist, removeFromWishlist, selectIsInWishlist } from "../../redux/wishlist/selectors";
+import { addToWishlist, removeFromWishlist } from "../../redux/wishlist/operations";
+import { selectIsInWishlist } from "../../redux/wishlist/selectors";
 import css from "./ProductDetailsPage.module.css";
 import { toast } from "react-hot-toast";
 
