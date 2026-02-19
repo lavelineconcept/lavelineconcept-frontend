@@ -1,30 +1,35 @@
 .weStory {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     gap: 20px;
-    padding: 40px 20px;
+    padding: 30px 15px;
     background-color: #d5f1e7;
 }
+
 .textContainer {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    text-align: center;
 }
+
 .title {
     display: flex;
     justify-content: center;
-    font-size: 48px;
+    font-size: 32px;
     font-weight: bold;
     color: #587C70;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
 }
+
 .description {
-    font-size: 18px;
+    font-size: 16px;
     color: #587C70;
     line-height: 1.6;
 }
+
 .button {
     margin: 24px auto;
     padding: 12px 24px;
@@ -36,13 +41,42 @@
     cursor: pointer;
     transition: background-color 0.3s ease;
     text-decoration: none;
+    display: inline-flex;
     justify-content: center;
 }
+
 .button:hover {
     background-color: #3e5c56;
 }
 
 .logo {
-    width: 500px;
+    width: 100%;
+    max-width: 300px;
     height: auto;
+}
+
+@media (min-width: 768px) {
+    .weStory {
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 40px 20px;
+        text-align: left;
+    }
+
+    .textContainer {
+        text-align: left;
+    }
+
+    .title {
+        font-size: 48px;
+        justify-content: flex-start;
+    }
+
+    .description {
+        font-size: 18px;
+    }
+
+    .logo {
+        max-width: 500px;
+    }
 }

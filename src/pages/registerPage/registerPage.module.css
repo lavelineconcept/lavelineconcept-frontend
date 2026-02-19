@@ -14,7 +14,7 @@
     border-radius: 12px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
     width: 100%;
-    max-width: 420px;
+    max-width: 600px;
     border: 1px solid rgba(132, 123, 119, 0.1);
 }
 
@@ -37,13 +37,20 @@
 .form {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 1.25rem;
+}
+
+.row {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
 }
 
 .field {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
+    flex: 1;
 }
 
 .field label {
@@ -78,19 +85,6 @@
     font-size: 0.75rem;
     margin-top: 0.25rem;
     font-family: 'Inter', sans-serif;
-}
-
-.forgotPassword {
-    align-self: flex-end;
-    font-size: 0.85rem;
-    color: #847b77;
-    text-decoration: none;
-    transition: color 0.2s;
-    font-family: 'Inter', sans-serif;
-}
-
-.forgotPassword:hover {
-    color: #587c70;
 }
 
 .submitBtn {
@@ -144,7 +138,13 @@
     text-decoration: underline;
 }
 
-/* Mobile Adjustments */
+/* Responsive Adjustments */
+@media (min-width: 600px) {
+    .row {
+        flex-direction: row;
+    }
+}
+
 @media (max-width: 480px) {
     .card {
         padding: 2rem 1.5rem;

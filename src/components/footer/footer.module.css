@@ -5,15 +5,18 @@
   color: #fff;
   padding: 20px;
 }
+
 .footercontent {
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
+
 .footerLink {
   color: #fff;
   text-decoration: none;
 }
+
 .footerLinks {
   color: #fff;
   text-decoration: none;
@@ -23,21 +26,36 @@
 
 .footerTop {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
-  gap: 50px;
+  gap: 20px;
   margin-bottom: 20px;
 }
+
 .footerBottom {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin: 0 auto;
 }
+
 .iyzicoLogo {
-  width: 320px;
+  width: 100%;
+  max-width: 250px;
 }
+
 .footerText {
   display: block;
   font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  .footerTop {
+    flex-direction: row;
+    gap: 50px;
+  }
+
+  .iyzicoLogo {
+    max-width: 320px;
+  }
 }

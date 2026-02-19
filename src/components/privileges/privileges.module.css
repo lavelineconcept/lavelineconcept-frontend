@@ -1,19 +1,39 @@
 .privileges {
   display: flex;
-    flex-direction: column;
+  flex-direction: column;
   justify-content: center;
-    align-items: center;
-  margin: 40px 20px;
+  align-items: center;
+  margin: 20px 10px;
 }
+
 .content {
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  gap: 20px;
+}
+
+.image {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  margin-top: 10px;
+}
+
+@media (min-width: 768px) {
+  .privileges {
+    margin: 40px 20px;
+  }
+
+  .content {
     flex-direction: row;
-    align-items: center;
     justify-content: space-around;
     width: 80%;
-}
-.image {
-  width: 400px;
-    height: auto;
-    margin-top: 10px;
+  }
+
+  .image {
+    max-width: 400px;
+  }
 }

@@ -1,13 +1,23 @@
 .lastAddedSection {
-  padding: 4rem 2rem;
+  padding: 2rem 1rem;
   background-color: #f9f7f6;
 }
 
 .title {
-  font-size: 48px;
+  font-size: 32px;
   font-weight: 700;
   color: #847b77;
   text-align: center;
   margin-bottom: 2rem;
   font-family: "Playfair", serif;
+}
+
+@media (min-width: 768px) {
+  .lastAddedSection {
+    padding: 4rem 2rem;
+  }
+
+  .title {
+    font-size: 48px;
+  }
 }
