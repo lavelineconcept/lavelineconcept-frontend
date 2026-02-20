@@ -1,10 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&display=swap');
-
 .container {
     max-width: 1200px;
     margin: 40px auto;
     padding: 0 20px;
-    font-family: 'Outfit', sans-serif;
+    font-family: 'Inter', sans-serif;
 }
 
 .checkoutForm {
@@ -33,10 +31,11 @@
 }
 
 .section h2 {
-    font-size: 1.4rem;
-    font-weight: 500;
+    font-size: 1.5rem;
+    font-weight: 700;
     margin-bottom: 25px;
-    color: #1a1a1a;
+    color: #587c70;
+    font-family: 'Playfair', serif;
 }
 
 .inputGroup {
@@ -47,9 +46,11 @@
 }
 
 .inputGroup label {
-    font-size: 0.9rem;
-    font-weight: 500;
-    color: #666;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #587c70;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
 }
 
 .inputGroup input {
@@ -62,7 +63,8 @@
 
 .inputGroup input:focus {
     outline: none;
-    border-color: #1a1a1a;
+    border-color: #587c70;
+    box-shadow: 0 0 0 3px rgba(88, 124, 112, 0.1);
 }
 
 .row {
@@ -112,9 +114,13 @@
 }
 
 .ibanInfo {
-    font-size: 0.8rem;
-    color: #888;
-    margin: 0;
+    font-size: 0.85rem;
+    color: #587c70;
+    font-weight: 600;
+    background: rgba(88, 124, 112, 0.05);
+    padding: 10px;
+    border-radius: 4px;
+    margin-top: 5px;
     font-family: monospace;
     letter-spacing: 0.5px;
 }
@@ -232,28 +238,31 @@
     border-top: 1px solid #333;
     padding-top: 15px;
     margin-top: 5px;
-    font-size: 1.2rem;
-    font-weight: 600;
+    font-size: 1.25rem;
+    font-weight: 700;
     color: #fff;
+    font-family: 'Playfair', serif;
 }
 
 .submitBtn {
     width: 100%;
-    background: #fff;
-    color: #1a1a1a;
+    background: #587c70;
+    color: #fff;
     border: none;
     padding: 18px;
     border-radius: 8px;
     font-size: 1rem;
     font-weight: 600;
-    letter-spacing: 1px;
+    letter-spacing: 0.05em;
     cursor: pointer;
     transition: all 0.3s;
+    box-shadow: 0 4px 12px rgba(88, 124, 112, 0.2);
 }
 
 .submitBtn:hover:not(:disabled) {
-    background: #f0f0f0;
+    background: #4a695f;
     transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(88, 124, 112, 0.3);
 }
 
 .submitBtn:disabled {
@@ -294,8 +303,11 @@
 }
 
 .successCard h2 {
-    font-size: 2rem;
+    font-size: 2.25rem;
+    font-weight: 700;
     margin-bottom: 15px;
+    color: #587c70;
+    font-family: 'Playfair', serif;
 }
 
 .successCard p {

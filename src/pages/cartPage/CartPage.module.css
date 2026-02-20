@@ -14,9 +14,10 @@
 }
 
 .header h1 {
-    font-size: 2rem;
-    font-weight: 500;
-    letter-spacing: 1px;
+    font-size: 2.25rem;
+    font-weight: 700;
+    color: #587c70;
+    font-family: 'Playfair', serif;
     margin-bottom: 5px;
 }
 
@@ -183,8 +184,10 @@
 }
 
 .summary h2 {
-    font-size: 1.4rem;
-    font-weight: 500;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #587c70;
+    font-family: 'Playfair', serif;
     margin-bottom: 25px;
 }
 
@@ -232,8 +235,9 @@
     padding-top: 15px;
     margin-top: 5px;
     font-size: 1.25rem;
-    font-weight: 600;
-    color: #000;
+    font-weight: 700;
+    color: #587c70;
+    font-family: 'Playfair', serif;
 }
 
 .checkoutBtn {
@@ -286,17 +290,18 @@
 }
 
 .shopBtn {
-    background: #1a1a1a;
+    background: #587c70;
     color: #fff;
     padding: 15px 40px;
     border-radius: 8px;
     text-decoration: none;
-    font-weight: 500;
-    transition: background 0.3s;
+    font-weight: 600;
+    transition: all 0.3s;
 }
 
 .shopBtn:hover {
-    background: #333;
+    background: #4a695f;
+    transform: translateY(-1px);
 }
 
 .loading {
