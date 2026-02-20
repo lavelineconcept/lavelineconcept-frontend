@@ -18,6 +18,8 @@ const ProfilePage = lazy(() => import('../../pages/profilePage/ProfilePage'));
 const ProductDetailsPage = lazy(() => import('../../pages/productDetailsPage/ProductDetailsPage'));
 const ProductsPage = lazy(() => import('../../pages/productsPage/ProductsPage'));
 const AdminPage = lazy(() => import('../../pages/adminPage/AdminPage'));
+const CartPage = lazy(() => import('../../pages/cartPage/CartPage'));
+const CheckoutPage = lazy(() => import('../../pages/checkoutPage/CheckoutPage'));
 
 const App = () => {
   return (
@@ -52,6 +54,15 @@ const App = () => {
           />
           <Route path="/products" element={<ProductsPage />} />
           <Route path="/products/:productId" element={<ProductDetailsPage />} />
+          <Route path="/cart" element={<CartPage />} />
+          <Route
+            path="/checkout"
+            element={
+              <PrivateRoute>
+                <CheckoutPage />
+              </PrivateRoute>
+            }
+          />
           <Route
             path="/admin"
             element={

@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { selectIsLoggedIn, selectUser } from "../../redux/auth/selectors";
+import { selectCartTotalCount } from "../../redux/cart/selectors";
 import { logoutUser } from "../../redux/auth/operations";
 import css from "./navigation.module.css";
 
@@ -8,6 +9,7 @@ export default function Navigation() {
   const dispatch = useDispatch();
   const isLoggedIn = useSelector(selectIsLoggedIn);
   const user = useSelector(selectUser);
+  const cartCount = useSelector(selectCartTotalCount);
 
   const handleLogout = () => {
     dispatch(logoutUser());
@@ -33,12 +35,13 @@ export default function Navigation() {
             <path d="M9 12v5" />
             <path d="M15 12v5" />
           </svg>
+          {cartCount > 0 && <span className={css.cartBadge}>{cartCount}</span>}
         </Link>
 
         {isLoggedIn ? (
           <>
             <Link to="/profile" className={css.profileLink}>Profil</Link>
-            <button onClick={handleLogout} className={css.logoutBtn}>ÇIKIŞ</button>
+            <button onClick={handleLogout} className={css.button}>ÇIKIŞ</button>
           </>
         ) : (
           <Link to="/login" className={css.button}>GİRİŞ YAP</Link>

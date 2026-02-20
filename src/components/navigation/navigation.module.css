@@ -73,6 +73,26 @@
   height: 32px;
   padding: 0 !important;
   margin-left: 0.5rem;
+  position: relative;
+}
+
+.cartBadge {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  background-color: #d4af37;
+  color: white;
+  font-size: 0.7rem;
+  font-weight: bold;
+  min-width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  padding: 2px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-family: sans-serif;
 }
 
 .cartLink svg {
@@ -134,5 +154,5 @@
 }
 
 @media (min-width: 1280px) {
-    /* Add any desktop specific tweaks here if needed, currently 768px+ style covers desktop well */
+  /* Add any desktop specific tweaks here if needed, currently 768px+ style covers desktop well */
 }
