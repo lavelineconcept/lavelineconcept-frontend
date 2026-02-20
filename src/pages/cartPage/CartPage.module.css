@@ -1,10 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&display=swap');
-
 .container {
     max-width: 1200px;
     margin: 40px auto;
     padding: 0 20px;
-    font-family: 'Outfit', sans-serif;
+    font-family: 'Inter', sans-serif;
     color: #1a1a1a;
     min-height: 70vh;
 }
@@ -250,13 +248,13 @@
     letter-spacing: 1px;
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 .checkoutBtn:hover {
     background: #333;
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
 }
 
 .checkoutNotice {
@@ -316,12 +314,12 @@
         align-items: flex-start;
         gap: 20px;
     }
-    
+
     .controls {
         width: 100%;
         justify-content: space-between;
     }
-    
+
     .priceInfo {
         text-align: left;
     }

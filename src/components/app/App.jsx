@@ -20,6 +20,8 @@ const ProductsPage = lazy(() => import('../../pages/productsPage/ProductsPage'))
 const AdminPage = lazy(() => import('../../pages/adminPage/AdminPage'));
 const CartPage = lazy(() => import('../../pages/cartPage/CartPage'));
 const CheckoutPage = lazy(() => import('../../pages/checkoutPage/CheckoutPage'));
+const ForgotPasswordPage = lazy(() => import('../../pages/forgotPasswordPage/ForgotPasswordPage'));
+const ResetPasswordPage = lazy(() => import('../../pages/resetPasswordPage/ResetPasswordPage'));
 
 const App = () => {
   return (
@@ -41,6 +43,22 @@ const App = () => {
             element={
               <RestrictedRoute redirectTo="/">
                 <RegisterPage />
+              </RestrictedRoute>
+            }
+          />
+          <Route
+            path="/forgot-password"
+            element={
+              <RestrictedRoute redirectTo="/">
+                <ForgotPasswordPage />
+              </RestrictedRoute>
+            }
+          />
+          <Route
+            path="/reset-password"
+            element={
+              <RestrictedRoute redirectTo="/">
+                <ResetPasswordPage />
               </RestrictedRoute>
             }
           />
