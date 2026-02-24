@@ -30,6 +30,14 @@
   text-decoration: none;
   margin: 5px auto;
   justify-content: first baseline;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: opacity 0.3s;
+}
+
+.footerLinks:hover {
+  opacity: 0.8;
 }
 
 .footerTop {

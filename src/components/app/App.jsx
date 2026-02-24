@@ -23,6 +23,11 @@ const CartPage = lazy(() => import('../../pages/cartPage/CartPage'));
 const CheckoutPage = lazy(() => import('../../pages/checkoutPage/CheckoutPage'));
 const ForgotPasswordPage = lazy(() => import('../../pages/forgotPasswordPage/ForgotPasswordPage'));
 const ResetPasswordPage = lazy(() => import('../../pages/resetPasswordPage/ResetPasswordPage'));
+const AboutPage = lazy(() => import('../../pages/info/AboutPage'));
+const ContactPage = lazy(() => import('../../pages/info/ContactPage'));
+const DeliveryPage = lazy(() => import('../../pages/info/DeliveryPage'));
+const PrivacyPolicyPage = lazy(() => import('../../pages/info/PrivacyPolicyPage'));
+const DistanceSalesAgreementPage = lazy(() => import('../../pages/info/DistanceSalesAgreementPage'));
 
 const App = () => {
   const dispatch = useDispatch();
@@ -103,6 +108,11 @@ const App = () => {
               </AdminRoute>
             }
           />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/contact" element={<ContactPage />} />
+          <Route path="/delivery" element={<DeliveryPage />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+          <Route path="/distance-sales-agreement" element={<DistanceSalesAgreementPage />} />
         </Routes>
       </Suspense>
       <Footer />

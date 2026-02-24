@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 import css from "./footer.module.css"
 import iyzicoLogo from "../../assets/logo_band_colored@2x.png"
 
@@ -27,17 +28,17 @@ export default function Footer() {
             </a>
           </div>
           <div className={css.footerContent}>
-            <h4 className={css.footerLinks}>Hakkımızda</h4>
-            <h4 className={css.footerLinks}>Gizlilik sözleşmesi</h4>
-            <h4 className={css.footerLinks}>Kullanım koşulları</h4>
-            <h4 className={css.footerLinks}>İletişim</h4>
-            <h4 className={css.footerLinks}>Teslimat ve İadeler</h4>
+            <Link to="/about" className={css.footerLinks}>Hakkımızda</Link>
+            <Link to="/contact" className={css.footerLinks}>İletişim</Link>
+            <Link to="/delivery" className={css.footerLinks}>Teslimat ve İadeler</Link>
+            <Link to="/privacy-policy" className={css.footerLinks}>Gizlilik Politikası</Link>
+            <Link to="/distance-sales-agreement" className={css.footerLinks}>Mesafeli Satış Sözleşmesi</Link>
           </div>
         </div>
         <div className={css.footerBottom}>
           <img src={iyzicoLogo} alt="iyzico logo" className={css.iyzicoLogo} />
           <p className={css.footerText}>
-            © 2024 Laveline Concept. Tüm hakları saklıdır.
+            © 2025 La Véline Concept. Tüm hakları saklıdır.
           </p>
         </div>
       </footer>
