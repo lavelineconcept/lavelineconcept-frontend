@@ -1,12 +1,13 @@
 import { Routes, Route } from "react-router-dom";
-import { Suspense, lazy } from "react";
+import { Suspense, lazy, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Toaster } from "react-hot-toast";
 import css from "./App.module.css";
 import RestrictedRoute from "../../routes/RestrictedRoute";
 import PrivateRoute from "../../routes/PrivateRoute";
 import AdminRoute from "../../routes/AdminRoute";
-
-
+import { refreshUser, setAuthHeader } from "../../redux/auth/operations";
+import { selectIsLoggedIn } from "../../redux/auth/selectors";
 
 import Navigation from "../navigation/navigation";
 import Footer from "../footer/footer";
@@ -24,6 +25,19 @@ const ForgotPasswordPage = lazy(() => import('../../pages/forgotPasswordPage/For
 const ResetPasswordPage = lazy(() => import('../../pages/resetPasswordPage/ResetPasswordPage'));
 
 const App = () => {
+  const dispatch = useDispatch();
+  const isLoggedIn = useSelector(selectIsLoggedIn);
+  const token = useSelector((state) => state.auth.token);
+
+  useEffect(() => {
+    if (isLoggedIn && token) {
+      // Persist'ten gelen token'ı axis header'a set et
+      setAuthHeader(token);
+      // Sonra refresh ile yeni token al (cookie varsa çalışır, yoksa mevcut token kullanılır)
+      dispatch(refreshUser());
+    }
+  }, [dispatch]); // eslint-disable-line react-hooks/exhaustive-deps
+
   return (
     <div className={css.appContainer}>
       <Navigation />
@@ -98,3 +112,4 @@ const App = () => {
 };
 
 export default App;
+

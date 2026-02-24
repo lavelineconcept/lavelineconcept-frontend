@@ -4,31 +4,6 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 axios.defaults.baseURL = import.meta.env.VITE_API_BASE_URL;
 axios.defaults.withCredentials = true;
 
-// add response interceptor to handle 401 centrally
-axios.interceptors.response.use(
-  (response) => response,
-  (error) => {
-    console.warn(
-      "Axios error - url:",
-      error.config?.url,
-      "method:",
-      error.config?.method
-    );
-    console.warn("Request headers:", error.config?.headers);
-    console.warn(
-      "Response status:",
-      error.response?.status,
-      "body:",
-      error.response?.data
-    );
-    // 401 durumunda header temizle (loop engellemek için)
-    if (error.response?.status === 401) {
-      delete axios.defaults.headers.common.Authorization;
-    }
-    return Promise.reject(error);
-  }
-);
-
 export const setAuthHeader = (token) => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
 };
@@ -36,6 +11,80 @@ export const setAuthHeader = (token) => {
 export const clearAuthHeader = () => {
   delete axios.defaults.headers.common.Authorization;
 };
+
+// --- 401 Auto-Refresh Interceptor ---
+let isRefreshingToken = false;
+let failedQueue = [];
+
+const processQueue = (error, token = null) => {
+  failedQueue.forEach((prom) => {
+    if (error) {
+      prom.reject(error);
+    } else {
+      prom.resolve(token);
+    }
+  });
+  failedQueue = [];
+};
+
+axios.interceptors.response.use(
+  (response) => response,
+  async (error) => {
+    const originalRequest = error.config;
+
+    // 401 geldiğinde ve daha önce retry edilmemişse refresh dene
+    if (
+      error.response?.status === 401 &&
+      !originalRequest._retry &&
+      !originalRequest.url?.includes("/auth/refresh") &&
+      !originalRequest.url?.includes("/auth/login") &&
+      !originalRequest.url?.includes("/auth/register")
+    ) {
+      if (isRefreshingToken) {
+        // Zaten refresh çalışıyorsa kuyruğa ekle
+        return new Promise((resolve, reject) => {
+          failedQueue.push({ resolve, reject });
+        })
+          .then((token) => {
+            originalRequest.headers.Authorization = `Bearer ${token}`;
+            return axios(originalRequest);
+          })
+          .catch((err) => Promise.reject(err));
+      }
+
+      originalRequest._retry = true;
+      isRefreshingToken = true;
+
+      try {
+        const response = await axios.post(
+          "/auth/refresh",
+          {},
+          { withCredentials: true }
+        );
+
+        const { accessToken, token } = response.data.data;
+        const newToken = accessToken || token;
+
+        if (newToken) {
+          setAuthHeader(newToken);
+          processQueue(null, newToken);
+
+          // Orijinal isteği yeni token ile tekrarla
+          originalRequest.headers.Authorization = `Bearer ${newToken}`;
+          return axios(originalRequest);
+        }
+      } catch (refreshError) {
+        processQueue(refreshError, null);
+        clearAuthHeader();
+        return Promise.reject(refreshError);
+      } finally {
+        isRefreshingToken = false;
+      }
+    }
+
+    return Promise.reject(error);
+  }
+);
 
 // REGISTER
 export const registerUser = createAsyncThunk(
@@ -110,6 +159,15 @@ export const logoutUser = createAsyncThunk(
 export const refreshUser = createAsyncThunk(
   "auth/refresh",
   async (_, thunkAPI) => {
+    // Önce persist'ten gelen token'ı kontrol et
+    const state = thunkAPI.getState();
+    const persistedToken = state.auth.token;
+
+    // Eğer persisted token varsa, önce onu set et
+    if (persistedToken) {
+      setAuthHeader(persistedToken);
+    }
+
     try {
       // POST request, cookie otomatik gönderilecek (withCredentials)
       const response = await axios.post(
@@ -131,10 +189,17 @@ export const refreshUser = createAsyncThunk(
       localStorage.setItem("user", JSON.stringify(user));
       return { user, token: finalToken };
     } catch (error) {
-      if (error.response?.status !== 401) {
-        console.error("Refresh error:", error.response?.data || error.message);
+      // Refresh başarısız ama persisted token varsa, onu kullanmaya devam et
+      // (cross-origin cookie sorunu olabilir)
+      if (persistedToken) {
+        setAuthHeader(persistedToken);
+        // fulfilled olarak dönmüyoruz ama reject de etmiyoruz —
+        // mevcut state'i korumak için fulfilled olarak dön
+        const persistedUser = state.auth.user;
+        return { user: persistedUser, token: persistedToken };
       }
 
+      clearAuthHeader();
       return thunkAPI.rejectWithValue(
         error.response?.data?.message || error.message
       );

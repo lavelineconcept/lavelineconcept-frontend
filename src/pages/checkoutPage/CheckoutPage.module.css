@@ -347,6 +347,132 @@
     background: #f9f9f9;
 }
 
+/* Address Selection */
+.addressSelection {
+    margin-bottom: 10px;
+}
+
+.addressLabel {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #587c70;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 12px;
+}
+
+.addressCards {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.addressCard {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 16px;
+    border: 2px solid #e8e8e8;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    background: #fafafa;
+}
+
+.addressCard:hover {
+    border-color: #587c70;
+    background: #f5f9f7;
+}
+
+.selectedCard {
+    border-color: #587c70;
+    background: #f0f7f4;
+    box-shadow: 0 2px 8px rgba(88, 124, 112, 0.12);
+}
+
+.addressCardRadio {
+    padding-top: 2px;
+    flex-shrink: 0;
+}
+
+.radioCircle {
+    display: block;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px solid #ccc;
+    transition: all 0.2s;
+    position: relative;
+}
+
+.radioActive {
+    border-color: #587c70;
+}
+
+.radioActive::after {
+    content: "";
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #587c70;
+}
+
+.addressCardBody {
+    flex: 1;
+}
+
+.addressCardTitle {
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: #1a1a1a;
+    margin-bottom: 6px;
+}
+
+.addressCardText {
+    font-size: 0.88rem;
+    color: #555;
+    line-height: 1.5;
+}
+
+.addressCardPhone {
+    font-size: 0.85rem;
+    color: #777;
+    margin-top: 6px;
+}
+
+.newAddressBtn {
+    display: block;
+    width: 100%;
+    padding: 13px;
+    border: 2px dashed #d0d0d0;
+    border-radius: 10px;
+    background: transparent;
+    color: #587c70;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.newAddressBtn:hover {
+    border-color: #587c70;
+    background: rgba(88, 124, 112, 0.03);
+}
+
+.newAddressBtnActive {
+    border-color: #587c70;
+    background: #f0f7f4;
+    color: #3d5e53;
+}
+
+.manualAddress {
+    animation: slideDown 0.3s ease-out;
+}
+
 .emptyState {
     text-align: center;
     padding: 100px 20px;

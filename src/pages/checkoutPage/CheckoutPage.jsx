@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
@@ -7,7 +7,7 @@ import { selectCartItems, selectCartTotalPrice, selectIsGiftWrap } from "../../r
 import { createOrder } from "../../redux/orders/operations";
 import { clearCart } from "../../redux/cart/operations";
 import { clearCartLocal } from "../../redux/cart/slice";
-import { selectIsLoggedIn } from "../../redux/auth/selectors";
+import { selectIsLoggedIn, selectUser } from "../../redux/auth/selectors";
 import css from "./CheckoutPage.module.css";
 import { toast } from "react-hot-toast";
 
@@ -18,7 +18,25 @@ const CheckoutPage = () => {
     const totalPrice = useSelector(selectCartTotalPrice);
     const isGiftWrap = useSelector(selectIsGiftWrap);
     const isLoggedIn = useSelector(selectIsLoggedIn);
+    const user = useSelector(selectUser);
     const [isSuccess, setIsSuccess] = useState(false);
+
+    const savedAddresses = user?.addresses || [];
+    const hasSavedAddresses = savedAddresses.length > 0;
+
+    // "saved" = kayıtlı adres seçildi, "new" = yeni adres giriliyor
+    const [addressMode, setAddressMode] = useState(hasSavedAddresses ? "saved" : "new");
+    const [selectedAddressIndex, setSelectedAddressIndex] = useState(hasSavedAddresses ? 0 : -1);
+
+    useEffect(() => {
+        if (hasSavedAddresses) {
+            setAddressMode("saved");
+            setSelectedAddressIndex(0);
+        } else {
+            setAddressMode("new");
+            setSelectedAddressIndex(-1);
+        }
+    }, [hasSavedAddresses]);
 
     const shippingCost = totalPrice > 1500 ? 0 : 135;
     const giftWrapCost = isGiftWrap ? 50 : 0;
@@ -39,10 +57,26 @@ const CheckoutPage = () => {
             cvc: "",
         },
         validationSchema: Yup.object({
-            street: Yup.string().required("Adres gereklidir"),
-            city: Yup.string().required("Şehir gereklidir"),
-            zip: Yup.string().required("Posta kodu gereklidir"),
-            contactNumber: Yup.string().required("Telefon numarası gereklidir"),
+            street: Yup.string().when([], {
+                is: () => addressMode === "new",
+                then: (schema) => schema.required("Adres gereklidir"),
+                otherwise: (schema) => schema.notRequired(),
+            }),
+            city: Yup.string().when([], {
+                is: () => addressMode === "new",
+                then: (schema) => schema.required("Şehir gereklidir"),
+                otherwise: (schema) => schema.notRequired(),
+            }),
+            zip: Yup.string().when([], {
+                is: () => addressMode === "new",
+                then: (schema) => schema.required("Posta kodu gereklidir"),
+                otherwise: (schema) => schema.notRequired(),
+            }),
+            contactNumber: Yup.string().when([], {
+                is: () => addressMode === "new",
+                then: (schema) => schema.required("Telefon numarası gereklidir"),
+                otherwise: (schema) => schema.notRequired(),
+            }),
             paymentMethod: Yup.string().required(),
             cardHolderName: Yup.string().when("paymentMethod", {
                 is: "Credit Card",
@@ -72,15 +106,32 @@ const CheckoutPage = () => {
                 return;
             }
 
-            const orderData = {
-                paymentMethod: values.paymentMethod,
-                address: {
+            let address;
+            let contactNumber;
+
+            if (addressMode === "saved" && selectedAddressIndex >= 0) {
+                const selected = savedAddresses[selectedAddressIndex];
+                address = {
+                    street: selected.address,
+                    city: selected.city,
+                    zip: "",
+                    country: "Türkiye",
+                };
+                contactNumber = selected.telephone;
+            } else {
+                address = {
                     street: values.street,
                     city: values.city,
                     zip: values.zip,
                     country: values.country,
-                },
-                contactNumber: values.contactNumber,
+                };
+                contactNumber = values.contactNumber;
+            }
+
+            const orderData = {
+                paymentMethod: values.paymentMethod,
+                address,
+                contactNumber,
                 isGiftWrap: isGiftWrap,
             };
 
@@ -108,6 +159,20 @@ const CheckoutPage = () => {
             }
         },
     });
+
+    const handleSelectAddress = (index) => {
+        setSelectedAddressIndex(index);
+        setAddressMode("saved");
+    };
+
+    const handleNewAddress = () => {
+        setAddressMode("new");
+        setSelectedAddressIndex(-1);
+        formik.setFieldValue("street", "");
+        formik.setFieldValue("city", "");
+        formik.setFieldValue("zip", "");
+        formik.setFieldValue("contactNumber", "");
+    };
 
     if (isSuccess) {
         return (
@@ -142,46 +207,84 @@ const CheckoutPage = () => {
                 <div className={css.leftCol}>
                     <section className={css.section}>
                         <h2>Teslimat Bilgileri</h2>
-                        <div className={css.inputGroup}>
-                            <label>Adres</label>
-                            <input
-                                name="street"
-                                type="text"
-                                placeholder="Sokak, No, Daire"
-                                {...formik.getFieldProps("street")}
-                            />
-                            {formik.touched.street && formik.errors.street && <span className={css.error}>{formik.errors.street}</span>}
-                        </div>
-                        <div className={css.row}>
-                            <div className={css.inputGroup}>
-                                <label>Şehir</label>
-                                <input
-                                    name="city"
-                                    type="text"
-                                    {...formik.getFieldProps("city")}
-                                />
-                                {formik.touched.city && formik.errors.city && <span className={css.error}>{formik.errors.city}</span>}
+
+                        {hasSavedAddresses && (
+                            <div className={css.addressSelection}>
+                                <p className={css.addressLabel}>Kayıtlı Adresleriniz</p>
+                                <div className={css.addressCards}>
+                                    {savedAddresses.map((addr, index) => (
+                                        <div
+                                            key={index}
+                                            className={`${css.addressCard} ${addressMode === "saved" && selectedAddressIndex === index ? css.selectedCard : ""}`}
+                                            onClick={() => handleSelectAddress(index)}
+                                        >
+                                            <div className={css.addressCardRadio}>
+                                                <span className={`${css.radioCircle} ${addressMode === "saved" && selectedAddressIndex === index ? css.radioActive : ""}`} />
+                                            </div>
+                                            <div className={css.addressCardBody}>
+                                                <p className={css.addressCardTitle}>{addr.title}</p>
+                                                <p className={css.addressCardText}>{addr.address}</p>
+                                                <p className={css.addressCardText}>{addr.district} / {addr.city}</p>
+                                                <p className={css.addressCardPhone}>📞 {addr.telephone}</p>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+
+                                <button
+                                    type="button"
+                                    className={`${css.newAddressBtn} ${addressMode === "new" ? css.newAddressBtnActive : ""}`}
+                                    onClick={handleNewAddress}
+                                >
+                                    + Farklı bir adres gir
+                                </button>
                             </div>
-                            <div className={css.inputGroup}>
-                                <label>Posta Kodu</label>
-                                <input
-                                    name="zip"
-                                    type="text"
-                                    {...formik.getFieldProps("zip")}
-                                />
-                                {formik.touched.zip && formik.errors.zip && <span className={css.error}>{formik.errors.zip}</span>}
+                        )}
+
+                        {(addressMode === "new" || !hasSavedAddresses) && (
+                            <div className={css.manualAddress}>
+                                <div className={css.inputGroup}>
+                                    <label>Adres</label>
+                                    <input
+                                        name="street"
+                                        type="text"
+                                        placeholder="Sokak, No, Daire"
+                                        {...formik.getFieldProps("street")}
+                                    />
+                                    {formik.touched.street && formik.errors.street && <span className={css.error}>{formik.errors.street}</span>}
+                                </div>
+                                <div className={css.row}>
+                                    <div className={css.inputGroup}>
+                                        <label>Şehir</label>
+                                        <input
+                                            name="city"
+                                            type="text"
+                                            {...formik.getFieldProps("city")}
+                                        />
+                                        {formik.touched.city && formik.errors.city && <span className={css.error}>{formik.errors.city}</span>}
+                                    </div>
+                                    <div className={css.inputGroup}>
+                                        <label>Posta Kodu</label>
+                                        <input
+                                            name="zip"
+                                            type="text"
+                                            {...formik.getFieldProps("zip")}
+                                        />
+                                        {formik.touched.zip && formik.errors.zip && <span className={css.error}>{formik.errors.zip}</span>}
+                                    </div>
+                                </div>
+                                <div className={css.inputGroup}>
+                                    <label>Telefon</label>
+                                    <input
+                                        name="contactNumber"
+                                        type="tel"
+                                        placeholder="0(xxx) xxx xx xx"
+                                        {...formik.getFieldProps("contactNumber")}
+                                    />
+                                    {formik.touched.contactNumber && formik.errors.contactNumber && <span className={css.error}>{formik.errors.contactNumber}</span>}
+                                </div>
                             </div>
-                        </div>
-                        <div className={css.inputGroup}>
-                            <label>Telefon</label>
-                            <input
-                                name="contactNumber"
-                                type="tel"
-                                placeholder="0(xxx) xxx xx xx"
-                                {...formik.getFieldProps("contactNumber")}
-                            />
-                            {formik.touched.contactNumber && formik.errors.contactNumber && <span className={css.error}>{formik.errors.contactNumber}</span>}
-                        </div>
+                        )}
                     </section>
 
                     <section className={css.section}>
