@@ -242,7 +242,7 @@
 
 .checkoutBtn {
     width: 100%;
-    background: #1a1a1a;
+    background: #587c70;
     color: #fff;
     border: none;
     padding: 18px;
@@ -256,9 +256,9 @@
 }
 
 .checkoutBtn:hover {
-    background: #333;
+    background: #4a695f;
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 6px 16px rgba(88, 124, 112, 0.3);
 }
 
 .checkoutNotice {
