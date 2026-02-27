@@ -1,0 +1,54 @@
+.slideText {
+    width: 100%;
+    overflow: hidden;
+    background-color: #fdfbf8;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+    padding: 15px 0;
+    white-space: nowrap;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.brandScroll {
+    display: flex;
+    animation: marquee 30s linear infinite;
+    min-width: 100%;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    padding: 0 40px;
+}
+
+.title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #847B77;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+}
+
+.separator {
+    margin: 0 40px;
+    font-size: 1.5rem;
+    color: #d4cfcc;
+}
+
+@keyframes marquee {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+/* Pause on hover for better UX */
+.slideText:hover .brandScroll {
+    animation-play-state: paused;
+}
