@@ -16,6 +16,7 @@ const ProductSchema = Yup.object().shape({
     stock: Yup.number().min(0, "Stok 0'dan az olamaz").required("Stok gerekli"),
     description: Yup.string().required("Açıklama gerekli"),
     categoryId: Yup.string().required("Kategori gerekli"),
+    stockCode: Yup.string(),
 });
 
 const AdminPage = () => {
@@ -318,6 +319,7 @@ const AdminPage = () => {
                             stock: editingProduct?.stock || 0,
                             description: editingProduct?.description || "",
                             categoryId: editingProduct?.categoryId?._id || editingProduct?.categoryId || "",
+                            stockCode: editingProduct?.stockCode || "",
                         }}
                         validationSchema={ProductSchema}
                         onSubmit={handleSubmit}
@@ -359,6 +361,11 @@ const AdminPage = () => {
                                         <label>Stok</label>
                                         <Field name="stock" type="number" className={css.input} />
                                         <ErrorMessage name="stock" component="div" className={css.error} />
+                                    </div>
+                                    <div className={css.fieldGroup}>
+                                        <label>Stok Kodu (Opsiyonel)</label>
+                                        <Field name="stockCode" className={css.input} />
+                                        <ErrorMessage name="stockCode" component="div" className={css.error} />
                                     </div>
                                 </div>
 
@@ -441,6 +448,7 @@ const AdminPage = () => {
                                 <th>Kategori</th>
                                 <th>Fiyat</th>
                                 <th>Stok</th>
+                                <th>Stok Kodu</th>
                                 <th>İşlemler</th>
                             </tr>
                         </thead>
@@ -463,6 +471,7 @@ const AdminPage = () => {
                                     <td>{categories.find(c => c._id === (product.categoryId?._id || product.categoryId))?.name || "—"}</td>
                                     <td>{product.price} TL</td>
                                     <td>{product.stock}</td>
+                                    <td>{product.stockCode || "—"}</td>
                                     <td>
                                         <div className={css.actions}>
                                             <button onClick={() => handleEdit(product)} className={css.editMiniBtn}>Düzenle</button>
