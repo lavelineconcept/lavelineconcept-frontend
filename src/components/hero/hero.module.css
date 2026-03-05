@@ -4,6 +4,9 @@
     justify-content: center;
     align-items: center;
     background-color: #b9d5cc;
+    background-image: url("../../assets/hero_image.png");
+    background-size: cover;
+    background-position: center;
     height: auto;
     min-height: 400px;
     padding: 1rem;
@@ -23,8 +26,9 @@
     padding: 1.5rem;
     margin: auto;
     border: 1px solid #faf8f83f;
-    background-color: #faf8f835;
-    color: #ffffff;
+    background-color: #faf8f899;
+    color: #847b77;
+    text-shadow: 1px 1px 2px #faf8f8;
     border-radius: 8px;
     width: 100%;
     max-width: 300px;

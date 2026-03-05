@@ -24,7 +24,7 @@
 }
 
 .brandName a:hover {
-  color: #d4af37;
+  color: #bbcbb9;
 }
 
 .navLinks {
@@ -47,7 +47,7 @@
 }
 
 .navLinks a:hover {
-  color: #d4af37;
+  color: #bbcbb9;
 }
 
 .navLinks a::after {
@@ -57,7 +57,7 @@
   left: 0;
   width: 0;
   height: 2px;
-  background-color: #d4af37;
+  background-color: #bbcbb9;
   transition: width 0.3s ease;
 }
 
@@ -80,7 +80,7 @@
   position: absolute;
   top: -6px;
   right: -6px;
-  background-color: #d4af37;
+  background-color: #587c70;
   color: white;
   font-size: 0.7rem;
   font-weight: bold;
@@ -103,7 +103,7 @@
 }
 
 .cartLink:hover svg {
-  stroke: #d4af37;
+  stroke: #bbcbb9;
 }
 
 .cartLink::after {
@@ -123,7 +123,7 @@
 }
 
 .button:hover {
-  background-color: #d4af37;
+  background-color: #bbcbb9;
 }
 
 .button::after {

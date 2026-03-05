@@ -9,27 +9,34 @@
     position: relative;
     display: flex;
     align-items: center;
+    margin-top: 30px;
 }
 
 .brandScroll {
     display: flex;
-    animation: marquee 30s linear infinite;
-    min-width: 100%;
+    width: max-content;
+    animation: marquee 100s linear infinite;
+    will-change: transform;
+}
+
+.brandGroup {
+    display: flex;
+    flex-shrink: 0;
 }
 
 .brand {
     display: flex;
     align-items: center;
-    padding: 0 40px;
+    padding: 0 5px;
 }
 
 .title {
-    font-family: 'Playfair Display', serif;
     font-size: 1.2rem;
     font-weight: 500;
     color: #847B77;
     letter-spacing: 0.15em;
     text-transform: uppercase;
+    white-space: nowrap;
 }
 
 .separator {
@@ -40,11 +47,11 @@
 
 @keyframes marquee {
     0% {
-        transform: translateX(0);
+        transform: translate3d(0, 0, 0);
     }
 
     100% {
-        transform: translateX(-50%);
+        transform: translate3d(-50%, 0, 0);
     }
 }
 

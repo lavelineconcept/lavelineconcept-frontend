@@ -2,28 +2,29 @@ import css from "./slideText.module.css";
 
 export default function SlideText() {
     const items = [
-        "TOPLU SİPARİŞ",
-        "LOREM IPSUM DOLOR SIT AMET",
-        "YENİ KOLEKSİYON",
-        "1500TL ÜZERİ KARGO ÜCRETSİZ",
-        "LOREM IPSUM DOLOR SIT AMET",
-        "GÜVENLI ÖDEME",
-        "EL YAPIMI",
-        "LOREM IPSUM DOLOR SIT AMET"
+        "– La Véline Concept –    Zarif, kişiye özel ve premium nişan hediyelikleri ile en özel anlarınızı unutulmaz hatıralara dönüştürüyoruz",
+        "– La Véline Concept –    Zarif, kişiye özel ve premium nişan hediyelikleri ile en özel anlarınızı unutulmaz hatıralara dönüştürüyoruz",
+        "– La Véline Concept –    Zarif, kişiye özel ve premium nişan hediyelikleri ile en özel anlarınızı unutulmaz hatıralara dönüştürüyoruz",
+        "– La Véline Concept –    Zarif, kişiye özel ve premium nişan hediyelikleri ile en özel anlarınızı unutulmaz hatıralara dönüştürüyoruz",
+        "– La Véline Concept –    Zarif, kişiye özel ve premium nişan hediyelikleri ile en özel anlarınızı unutulmaz hatıralara dönüştürüyoruz",
+        "– La Véline Concept –    Zarif, kişiye özel ve premium nişan hediyelikleri ile en özel anlarınızı unutulmaz hatıralara dönüştürüyoruz"
     ];
 
-    // Double the items for a seamless loop
-    const displayItems = [...items, ...items, ...items];
+    const content = (
+        <div className={css.brandGroup}>
+            {items.map((item, index) => (
+                <div key={index} className={css.brand}>
+                    <h1 className={css.title}>{item}</h1>
+                </div>
+            ))}
+        </div>
+    );
 
     return (
         <section className={css.slideText}>
             <div className={css.brandScroll}>
-                {displayItems.map((item, index) => (
-                    <div key={index} className={css.brand}>
-                        <h1 className={css.title}>{item}</h1>
-                        <span className={css.separator}>•</span>
-                    </div>
-                ))}
+                {content}
+                {content}
             </div>
         </section>
     );
