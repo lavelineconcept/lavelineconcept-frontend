@@ -7,12 +7,14 @@ export default function WeStory() {
     <>
       <section className={css.weStory}>
         <div className={css.textContainer}>
-          <h2 className={css.title}>Hikayemiz Burada Başlıyor</h2>
+          <h2 className={css.title}>La Véline Concept</h2>
           <p className={css.description}>
-            La Véline Concept, hikayemiz burada yazacak. Devamı için butana
-            basın.
-                  </p>
-            <Link to={"/ourStory"} className={css.button}>Devamını Oku</Link>
+            La Véline Concept olarak, özel günlerin en anlamlıdetaylarını zarafetle tasarlıyoruz.
+            Her bir hediyelik; özen, estetik ve kaliteli işçilik anlayışıyla hazırlanır.
+            <br /><br />
+            Amacımız, nişan ve özel davetlerinizde sevdiklerinize sadece bir hediye değil, unutulmaz bir hatıra sunmaktır.
+          </p>
+          <Link to={"/ourStory"} className={css.button}>Devamını Oku</Link>
         </div>
         <div>
           <img

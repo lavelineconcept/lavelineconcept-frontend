@@ -1,6 +1,5 @@
 .subscription {
   background-color: #EADFD0;
-  color: #fff;
   padding: 1.5rem;
   text-align: center;
   border-radius: 8px;
@@ -11,14 +10,9 @@
   margin-bottom: 20px;
 }
 
-@media (min-width: 768px) {
-  .subscription {
-    padding: 2rem;
-  }
-}
 
 .subscribeButton {
-  background-color: #d4af37;
+  background-color: #587c70;
   color: #fff;
   border: none;
   margin-top: 20px;
@@ -32,5 +26,11 @@
 }
 
 .subscribeButton:hover {
-  background-color: #bfa14a;
+  background-color: #bbcbb9;
+}
+
+@media (min-width: 768px) {
+  .subscription {
+    padding: 2rem;
+  }
 }

@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom"
 import css from "./footer.module.css"
 import iyzicoLogo from "../../assets/logo_band_colored@2x.png"
+import hooksLogo from "../../assets/hooks-logo.png"
 
 export default function Footer() {
   return (
@@ -46,6 +47,18 @@ export default function Footer() {
         <p className={css.footerText}>
           © 2025 La Véline Concept. Tüm hakları saklıdır.
         </p>
+        <div className={css.developer}>
+                    Developed by{" "}
+                    <a
+                        href="https://www.instagram.com/hookssoftwaresolutions?igsh=MWFmajMxYm5hMzhweQ=="
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={css.devLink}
+                    >
+                        <img src={hooksLogo} alt="HOOKS Logo" className={css.devLogo} />
+                        HOOKS SOFTWARE SOLUTIONS
+                    </a>
+                </div>
       </div>
     </footer>
   );

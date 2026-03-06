@@ -129,6 +129,35 @@
   opacity: 0.7;
   text-align: center;
 }
+.developer {
+    font-size: 0.75rem;
+    opacity: 0.8;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.devLink {
+    color: #fff9ef;
+    text-decoration: none;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 700;
+    transition: opacity 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.devLogo {
+    height: 30px;
+    width: auto;
+
+}
+
+.devLink:hover {
+    opacity: 1;
+    text-decoration: underline;
+}
 
 @media (min-width: 768px) {
   .footerContainer {
@@ -157,11 +186,7 @@
     justify-content: flex-end;
   }
 
-  .footerBottom {
-    flex-direction: row;
-    justify-content: space-between;
-    text-align: left;
-  }
+
 
   .footerText {
     text-align: left;
