@@ -48,27 +48,17 @@
 
 .footerLinks {
   color: #fff;
+  padding: 8px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 30px;
   text-decoration: none;
   font-size: 0.9rem;
   font-weight: 400;
   letter-spacing: 0.5px;
   transition: all 0.3s ease;
   position: relative;
-  padding: 2px 0;
 }
-
-.footerLinks::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  width: 0;
-  height: 1px;
-  background-color: #fff;
-  transition: all 0.3s ease;
-  transform: translateX(-50%);
-}
-
+  
 .footerLinks:hover {
   opacity: 1;
 }
@@ -120,8 +110,6 @@
   height: 30px;
   width: auto;
   opacity: 0.9;
-  filter: brightness(0) invert(1);
-  /* Making it white to look premium on green */
 }
 
 .footerText {

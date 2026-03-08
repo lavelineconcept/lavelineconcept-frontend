@@ -11,7 +11,7 @@ export const ContactPage = () => {
                 </p>
 
                 <div className={css.contactCards}>
-                    <a href="mailto:lavelineconcept@gmail.com" className={css.contactCard}>
+                    <a href="mailto:info@lavelineconcept.com" className={css.contactCard}>
                         <div className={css.cardIcon}>
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
@@ -29,7 +29,7 @@ export const ContactPage = () => {
                             </svg>
                         </div>
                         <span className={css.cardLabel}>E-posta</span>
-                        <span className={css.cardValue}>lavelineconcept@gmail.com</span>
+                        <span className={css.cardValue}>info@lavelineconcept.com</span>
                     </a>
 
                     <a href="https://www.instagram.com/lavelineconcept" className={css.contactCard} target="_blank" rel="noopener noreferrer">

@@ -11,6 +11,7 @@ import { selectIsLoggedIn } from "../../redux/auth/selectors";
 
 import Navigation from "../navigation/navigation";
 import Footer from "../footer/footer";
+import ScrollToTop from "../ScrollToTop/ScrolltoTop";
 
 const HomePage = lazy(() => import("../../pages/homePage/HomePage"));
 const LoginPage = lazy(() => import("../../pages/loginPage/loginPage"));
@@ -45,6 +46,7 @@ const App = () => {
 
   return (
     <div className={css.appContainer}>
+      <ScrollToTop />
       <Navigation />
       <Suspense fallback={<div style={{ padding: '100px', textAlign: 'center' }}>Yükleniyor...</div>}>
         <Routes>
