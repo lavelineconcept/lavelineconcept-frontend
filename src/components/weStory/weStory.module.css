@@ -5,7 +5,7 @@
     justify-content: center;
     gap: 20px;
     padding: 30px 15px;
-    background-color: #d5f1e7;
+    background-color: #ccbcaf;
 }
 
 .textContainer {
@@ -13,6 +13,7 @@
     flex-direction: column;
     justify-content: center;
     text-align: center;
+    max-width: 500px;
 }
 
 .title {
@@ -57,7 +58,7 @@
     .weStory {
         flex-direction: row;
         justify-content: space-between;
-        padding: 40px 20px;
+        padding: 40px 40px;
         text-align: left;
     }
 

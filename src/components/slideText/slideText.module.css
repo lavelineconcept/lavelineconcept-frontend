@@ -15,7 +15,7 @@
 .brandScroll {
     display: flex;
     width: max-content;
-    animation: marquee 100s linear infinite;
+    animation: marquee 140s linear infinite;
     will-change: transform;
 }
 
