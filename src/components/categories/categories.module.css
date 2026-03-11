@@ -1,10 +1,10 @@
 .categoriesSection {
-  padding: 1rem 1rem;
+  padding: 4rem 1rem;
   background-color: #ffffff;
 }
 
 .container {
-  max-width: 1200px;
+  max-width: 1300px;
   margin: 0 auto;
 }
 
@@ -14,27 +14,40 @@
   color: #847b77;
   text-align: center;
   margin-bottom: 3rem;
-  font-family: "Playfair", serif;
+  font-family: "Playfair Display", serif;
 }
 
-.grid {
-  display: grid;
-  grid-template-columns: repeat(1, 1fr);
-  gap: 1.5rem;
+.mySwiper {
+  padding: 0 0 4rem 0;
+  overflow: hidden;
+}
+
+:global(.swiper-pagination-bullet-active) {
+  background-color: #847b77;
+}
+
+:global(.swiper-button-next),
+:global(.swiper-button-prev) {
+  color: #847b77;
+  transform: scale(0.6);
+  top: 45%;
+}
+
+.slide {
+  transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+  width: 100% !important; /* Mobile default */
+  height: 350px;
 }
 
 .card {
   position: relative;
   border-radius: 12px;
   overflow: hidden;
-  aspect-ratio: 1 / 1;
   cursor: pointer;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-.card:hover {
-  transform: translateY(-5px);
+  transition: all 0.4s ease;
+  width: 100%;
+  height: 100%;
 }
 
 .imageWrapper {
@@ -51,13 +64,13 @@
 }
 
 .card:hover .image {
-  transform: scale(1.05);
+  transform: scale(1.08);
 }
 
 .overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(88, 124, 112, 0.7), transparent 60%);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.5), transparent 60%);
   display: flex;
   align-items: flex-end;
   justify-content: center;
@@ -65,38 +78,89 @@
   transition: background 0.3s ease;
 }
 
-.card:hover .overlay {
-  background: linear-gradient(to top, rgba(88, 124, 112, 0.8), transparent 70%);
-}
-
 .categoryName {
   color: #ffffff;
-  font-size: 1.5rem;
-  font-family: "Playfair", serif;
+  font-size: 1.2rem;
+  font-family: "Playfair Display", serif;
   font-weight: 600;
   text-align: center;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
 }
 
-@media (min-width: 600px) {
-  .grid {
-    grid-template-columns: repeat(2, 1fr);
+/* TABLET AND DESKTOP SHIFTING GRID */
+@media (min-width: 768px) {
+  .mySwiper {
+    height: 425px;
+  }
+
+  .slide {
+    width: 35% !important; /* Small width */
+    height: 200px;
+    opacity: 0.5; /* Non-active slides are dimmed slightly */
+  }
+
+  /* ACTIVE SLIDE: LARGE LEFT */
+  .slide:global(.swiper-slide-active) {
+    width: 65% !important; /* Large width */
+    height: 425px;
+    opacity: 1;
+    z-index: 10;
+  }
+
+  /* NEXT SLIDE: SMALL TOP RIGHT */
+  .slide:global(.swiper-slide-next) {
+    opacity: 1;
+    z-index: 5;
+    height: 200px;
+  }
+
+  /* NEXT+1 SLIDE: SMALL BOTTOM RIGHT */
+  /* We stack it under the NEXT slide by using a negative margin */
+  .slide:global(.swiper-slide-next + .swiper-slide) {
+    margin-left: -35% !important;
+    transform: translateY(225px); /* (425 - 200) = 225px gap included */
+    opacity: 1;
+    height: 200px;
+    z-index: 4;
+  }
+  
+  /* HIDE OTHER SLIDES UNTIL THEY ENTER THE GRID */
+  .slide:global(.swiper-slide-next + .swiper-slide + .swiper-slide) {
+    opacity: 0;
+  }
+
+  .title {
+    font-size: 42px;
+  }
+
+  .categoryName {
+    font-size: 1.6rem;
   }
 }
 
-@media (min-width: 992px) {
-  .grid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
+@media (min-width: 1200px) {
+  .container {
+    padding: 0 40px;
   }
 
   .title {
     font-size: 48px;
   }
-}
 
-@media (min-width: 1200px) {
-  .grid {
-    grid-template-columns: repeat(4, 1fr);
+  .categoryName {
+    font-size: 1.8rem;
+  }
+  
+  /* Refine proportions for wide screens */
+  .slide {
+    width: 32% !important;
+  }
+  
+  .slide:global(.swiper-slide-active) {
+    width: 68% !important;
+  }
+  
+  .slide:global(.swiper-slide-next + .swiper-slide) {
+    margin-left: -32% !important;
   }
 }
