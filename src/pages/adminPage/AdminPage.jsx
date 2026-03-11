@@ -19,6 +19,28 @@ const ProductSchema = Yup.object().shape({
     stockCode: Yup.string(),
 });
 
+const CategorySchema = Yup.object().shape({
+    name: Yup.string().min(2, "Kategori adı en az 2 karakter olmalıdır").required("Kategori adı gereklidir"),
+    description: Yup.string().max(500, "Açıklama en fazla 500 karakter olabilir"),
+});
+
+const slugify = (text) => {
+    const trMap = {
+        'ç': 'c', 'Ç': 'c', 'ğ': 'g', 'Ğ': 'g', 'ş': 's', 'Ş': 's',
+        'ü': 'u', 'Ü': 'u', 'ı': 'i', 'İ': 'i', 'ö': 'o', 'Ö': 'o'
+    };
+    for (const key in trMap) {
+        text = text.replace(new RegExp(key, 'g'), trMap[key]);
+    }
+    return text
+        .toString()
+        .toLowerCase()
+        .trim()
+        .replace(/\s+/g, '-')
+        .replace(/[^\w-]+/g, '')
+        .replace(/--+/g, '-');
+};
+
 const AdminPage = () => {
     const dispatch = useDispatch();
     const products = useSelector(selectProducts);
@@ -144,6 +166,7 @@ const AdminPage = () => {
     const handleCategorySubmit = (values, { resetForm }) => {
         const formData = new FormData();
         formData.append("name", values.name);
+        formData.append("slug", slugify(values.name));
         formData.append("description", values.description || "");
         if (catImageFile) formData.append("image", catImageFile);
 
@@ -220,6 +243,7 @@ const AdminPage = () => {
                             name: editingCategory?.name || "",
                             description: editingCategory?.description || ""
                         }}
+                        validationSchema={CategorySchema}
                         enableReinitialize
                         onSubmit={handleCategorySubmit}
                     >
@@ -227,11 +251,13 @@ const AdminPage = () => {
                             <Form className={css.adminForm}>
                                 <div className={css.fieldGroup}>
                                     <label>Kategori Adı</label>
-                                    <Field name="name" className={css.input} required />
+                                    <Field name="name" className={css.input} />
+                                    <ErrorMessage name="name" component="div" className={css.error} />
                                 </div>
                                 <div className={css.fieldGroup}>
                                     <label>Açıklama (Opsiyonel)</label>
                                     <Field as="textarea" name="description" className={css.textarea} />
+                                    <ErrorMessage name="description" component="div" className={css.error} />
                                 </div>
                                 <div className={css.fieldGroup}>
                                     <label>Kategori Görseli</label>
