@@ -14,7 +14,7 @@ export default function WeStory() {
             <br /><br />
             Amacımız, nişan ve özel davetlerinizde sevdiklerinize sadece bir hediye değil, unutulmaz bir hatıra sunmaktır.
           </p>
-          <Link to={"/ourStory"} className={css.button}>Devamını Oku</Link>
+          <Link to={"/about"} className={css.button}>Devamını Oku</Link>
         </div>
         <div>
           <img

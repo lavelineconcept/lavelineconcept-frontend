@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useSearchParams } from "react-router-dom";
 import { fetchProducts } from "../../redux/products/operations";
 import { fetchCategories } from "../../redux/categories/operations";
 import { selectProducts, selectIsLoading as selectProductsLoading, selectProductsPageInfo } from "../../redux/products/selectors";
@@ -9,11 +10,12 @@ import css from "./ProductsPage.module.css";
 
 const ProductsPage = () => {
     const dispatch = useDispatch();
+    const [searchParams, setSearchParams] = useSearchParams();
     const products = useSelector(selectProducts);
     const pageInfo = useSelector(selectProductsPageInfo);
     const isLoading = useSelector(selectProductsLoading);
 
-    const [activeCategory, setActiveCategory] = useState(null);
+    const [activeCategory, setActiveCategory] = useState(searchParams.get("category") || null);
     const [searchTerm, setSearchTerm] = useState("");
     const [page, setPage] = useState(1);
 
@@ -34,6 +36,11 @@ const ProductsPage = () => {
     const handleCategoryChange = (catId) => {
         setActiveCategory(catId);
         setPage(1);
+        if (catId) {
+            setSearchParams({ category: catId });
+        } else {
+            setSearchParams({});
+        }
     };
 
     const handleSearchChange = (e) => {

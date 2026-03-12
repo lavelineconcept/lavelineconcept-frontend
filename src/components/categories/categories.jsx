@@ -1,4 +1,5 @@
 import { useEffect, useState, useCallback, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCategories } from "../../redux/categories/operations";
 import { selectCategories } from "../../redux/categories/selectors";
@@ -6,6 +7,7 @@ import css from "./categories.module.css";
 
 export default function Categories() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const categories = useSelector(selectCategories);
   const [activeIndex, setActiveIndex] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
@@ -128,7 +130,18 @@ export default function Categories() {
     }
   }, [activeIndex]);
 
-  if (!categories || categories.length === 0) return null;
+  if (!categories || categories.length === 0) {
+    return (
+      <section className={css.categoriesSection}>
+        <div className={css.container}>
+          <h2 className={css.title}>Kategoriler</h2>
+          <div className={css.loaderWrapper}>
+            <span className={css.loader}></span>
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   // Determine which 4 items to render
   const visibleIndices = [getIdx(0), getIdx(1), getIdx(2)];
@@ -164,6 +177,7 @@ export default function Categories() {
             <div
               key={idx}
               className={`${css.card} ${getSlotClass(idx)}`}
+              onClick={() => navigate(`/products?category=${categories[idx]?._id}`)}
             >
               <div className={css.imageWrapper}>
                 <img
