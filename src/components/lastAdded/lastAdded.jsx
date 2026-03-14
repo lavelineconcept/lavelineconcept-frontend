@@ -21,11 +21,17 @@ export default function LastAdded() {
         <section className={css.lastAddedSection}>
             <div className={css.container}>
                 <h2 className={css.title}>Son Eklenenler</h2>
-                <div className={css.grid}>
-                    {lastEightProducts.map((product) => (
-                        <ProductCard key={product._id} product={product} />
-                    ))}
-                </div>
+                {lastEightProducts.length === 0 ? (
+                    <div className={css.loaderWrapper}>
+                        <div className={css.loader}></div>
+                    </div>
+                ) : (
+                    <div className={css.grid}>
+                        {lastEightProducts.map((product) => (
+                            <ProductCard key={product._id} product={product} />
+                        ))}
+                    </div>
+                )}
             </div>
         </section>
     );
