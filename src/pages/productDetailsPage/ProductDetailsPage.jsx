@@ -9,6 +9,7 @@ import { addToCartLocal } from "../../redux/cart/slice";
 import { addToWishlist, removeFromWishlist } from "../../redux/wishlist/operations";
 import { selectIsInWishlist } from "../../redux/wishlist/selectors";
 import css from "./ProductDetailsPage.module.css";
+import ImageWithFallback from "../../components/common/ImageWithFallback";
 import { toast } from "react-hot-toast";
 
 const ProductDetailsPage = () => {
@@ -80,22 +81,21 @@ const ProductDetailsPage = () => {
     }
 
     const { title, description, price, brand, images, stock, attributes } = product;
-    const placeholderImage = "/assets/laveline-yazılı-logo-nobackground.png";
 
     return (
         <div className={css.container}>
             <div className={css.content}>
                 <div className={css.gallery}>
                     <div className={css.mainImageWrapper}>
-                        <img
-                            src={images?.[activeImage] || placeholderImage}
+                        <ImageWithFallback
+                            src={images?.[activeImage]}
                             alt={title}
                             className={css.mainImage}
                         />
                     </div>
                     <div className={css.thumbnails}>
                         {images?.map((img, idx) => (
-                            <img
+                            <ImageWithFallback
                                 key={idx}
                                 src={img}
                                 alt={`${title} ${idx}`}

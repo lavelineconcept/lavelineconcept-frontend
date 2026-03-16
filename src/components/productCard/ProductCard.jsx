@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import ImageWithFallback from "../common/ImageWithFallback";
 import css from "./ProductCard.module.css";
 
 const ProductCard = ({ product }) => {
@@ -13,8 +14,8 @@ const ProductCard = ({ product }) => {
         <div className={css.card} onClick={handleClick}>
             <div className={css.imageWrapper}>
                 {isNew && <span className={css.badge}>YENİ</span>}
-                <img
-                    src={images?.[0] || "/assets/laveline-yazılı-logo-nobackground.png"}
+                <ImageWithFallback
+                    src={images?.[0]}
                     alt={name}
                     className={css.image}
                 />

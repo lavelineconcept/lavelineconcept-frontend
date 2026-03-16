@@ -9,6 +9,7 @@ import { clearCart } from "../../redux/cart/operations";
 import { clearCartLocal } from "../../redux/cart/slice";
 import { selectIsLoggedIn, selectUser } from "../../redux/auth/selectors";
 import css from "./CheckoutPage.module.css";
+import ImageWithFallback from "../../components/common/ImageWithFallback";
 import { toast } from "react-hot-toast";
 
 const CheckoutPage = () => {
@@ -114,7 +115,7 @@ const CheckoutPage = () => {
                 address = {
                     street: selected.address,
                     city: selected.city,
-                    zip: "",
+                    zip: selected.zip || "34000", // Fallback for existing addresses without zip
                     country: "Türkiye",
                 };
                 contactNumber = selected.telephone;
@@ -384,7 +385,7 @@ const CheckoutPage = () => {
                         <div className={css.itemsScroll}>
                             {items.map(item => (
                                 <div key={item._id} className={css.summaryItem}>
-                                    <img src={item.productId?.images?.[0]} alt={item.productId?.title} />
+                                    <ImageWithFallback src={item.productId?.images?.[0]} alt={item.productId?.title} />
                                     <div className={css.itemInfo}>
                                         <p className={css.itemTitle}>{item.productId?.title}</p>
                                         <p className={css.itemMeta}>{item.quantity} Adet • {item.productId?.price} TL</p>

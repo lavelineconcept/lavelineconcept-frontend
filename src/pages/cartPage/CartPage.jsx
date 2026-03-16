@@ -18,6 +18,7 @@ import {
 } from "../../redux/cart/slice";
 import { selectIsLoggedIn } from "../../redux/auth/selectors";
 import css from "./CartPage.module.css";
+import ImageWithFallback from "../../components/common/ImageWithFallback";
 import { toast } from "react-hot-toast";
 
 const CartPage = () => {
@@ -99,8 +100,8 @@ const CartPage = () => {
                             <div key={item._id} className={css.cartItem}>
                                 <div className={css.productInfo}>
                                     <div className={css.imageWrapper}>
-                                        <img
-                                            src={product.images?.[0] || "/assets/laveline-yazılı-logo-nobackground.png"}
+                                        <ImageWithFallback
+                                            src={product.images?.[0]}
                                             alt={product.title}
                                         />
                                     </div>

@@ -45,6 +45,7 @@ const ProfilePage = () => {
         telephone: Yup.string().required("Telefon numarası gerekli"),
         city: Yup.string().required("Şehir gerekli"),
         district: Yup.string().required("İlçe gerekli"),
+        zip: Yup.string().required("Posta kodu gerekli"),
         address: Yup.string().required("Açık adres gerekli"),
     });
 
@@ -202,7 +203,7 @@ const ProfilePage = () => {
                                                 </div>
                                                 <div className={css.addressInfo}>
                                                     <p className={css.addressText}>{addr.address}</p>
-                                                    <p className={css.addressText}>{addr.district} / {addr.city}</p>
+                                                    <p className={css.addressText}>{addr.district} / {addr.city} {addr.zip && `- ${addr.zip}`}</p>
                                                     <p className={css.addressPhone}>📞 {addr.telephone}</p>
                                                 </div>
                                             </div>
@@ -217,6 +218,7 @@ const ProfilePage = () => {
                                     telephone: user?.telephone || "",
                                     city: "",
                                     district: "",
+                                    zip: "",
                                     address: ""
                                 }}
                                 validationSchema={addressSchema}
@@ -244,6 +246,11 @@ const ProfilePage = () => {
                                                 <label>İlçe</label>
                                                 <Field name="district" className={css.input} />
                                                 <ErrorMessage name="district" component="div" className={css.error} />
+                                            </div>
+                                            <div className={css.fieldGroup}>
+                                                <label>Posta Kodu</label>
+                                                <Field name="zip" className={css.input} />
+                                                <ErrorMessage name="zip" component="div" className={css.error} />
                                             </div>
                                         </div>
                                         <div className={css.fieldGroup}>

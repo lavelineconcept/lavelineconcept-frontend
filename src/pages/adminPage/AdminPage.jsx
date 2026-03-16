@@ -8,6 +8,7 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import toast from "react-hot-toast";
 import css from "./AdminPage.module.css";
+import ImageWithFallback from "../../components/common/ImageWithFallback";
 
 const ProductSchema = Yup.object().shape({
     title: Yup.string().required("Başlık gerekli"),
@@ -205,7 +206,6 @@ const AdminPage = () => {
         }
     };
 
-    const placeholderImage = "/assets/laveline-yazılı-logo-nobackground.png";
 
     return (
         <div className={css.container}>
@@ -316,7 +316,7 @@ const AdminPage = () => {
                                     <tbody>
                                         {categories.map(cat => (
                                             <tr key={cat._id}>
-                                                <td><img src={cat.image || placeholderImage} alt={cat.name} className={css.tableThumb} /></td>
+                                                <td><ImageWithFallback src={cat.image} alt={cat.name} className={css.tableThumb} /></td>
                                                 <td>{cat.name}</td>
                                                 <td>
                                                     <div className={css.actions}>
@@ -482,8 +482,8 @@ const AdminPage = () => {
                             {products.map(product => (
                                 <tr key={product._id}>
                                     <td>
-                                        <img
-                                            src={product.images?.[0] || placeholderImage}
+                                        <ImageWithFallback
+                                            src={product.images?.[0]}
                                             alt={product.title}
                                             className={css.tableThumb}
                                         />
