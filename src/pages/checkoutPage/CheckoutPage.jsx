@@ -56,6 +56,7 @@ const CheckoutPage = () => {
             expireMonth: "",
             expireYear: "",
             cvc: "",
+            customerNote: "",
         },
         validationSchema: Yup.object({
             street: Yup.string().when([], {
@@ -134,6 +135,7 @@ const CheckoutPage = () => {
                 address,
                 contactNumber,
                 isGiftWrap: isGiftWrap,
+                customerNote: values.customerNote,
             };
 
             if (values.paymentMethod === "Credit Card") {
@@ -376,6 +378,19 @@ const CheckoutPage = () => {
                                 </div>
                             </div>
                         )}
+                    </section>
+                    
+                    <section className={css.section}>
+                        <h2>Sipariş Notu (İsteğe Bağlı)</h2>
+                        <div className={css.inputGroup}>
+                            <textarea
+                                name="customerNote"
+                                placeholder="Siparişinizle ilgili iletmek istediğiniz özel bir notunuz var mı?"
+                                rows="3"
+                                {...formik.getFieldProps("customerNote")}
+                                style={{ width: '100%', padding: '12px', borderRadius: '4px', border: '1px solid #ddd', resize: 'vertical', fontFamily: 'inherit', marginTop: '10px' }}
+                            />
+                        </div>
                     </section>
                 </div>
 
