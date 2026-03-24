@@ -4,7 +4,7 @@ import css from "./ProductCard.module.css";
 
 const ProductCard = ({ product }) => {
     const navigate = useNavigate();
-    const { _id, name, price, images, isNew } = product;
+    const { _id, title, price, images, isNew } = product;
 
     const handleClick = () => {
         navigate(`/products/${_id}`);
@@ -16,7 +16,7 @@ const ProductCard = ({ product }) => {
                 {isNew && <span className={css.badge}>YENİ</span>}
                 <ImageWithFallback
                     src={images?.[0]}
-                    alt={name}
+                    alt={title}
                     className={css.image}
                 />
                 <div className={css.actionOverlay}>
@@ -24,7 +24,7 @@ const ProductCard = ({ product }) => {
                 </div>
             </div>
             <div className={css.info}>
-                <h3 className={css.name}>{name}</h3>
+                <h3 className={css.name}>{title}</h3>
                 <p className={css.price}>{price} TL</p>
             </div>
         </div>
