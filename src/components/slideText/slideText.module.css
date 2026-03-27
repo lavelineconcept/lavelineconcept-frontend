@@ -1,0 +1,61 @@
+.slideText {
+    width: 100%;
+    overflow: hidden;
+    background-color: #fdfbf8;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+    padding: 15px 0;
+    white-space: nowrap;
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.brandScroll {
+    display: flex;
+    width: max-content;
+    animation: marquee 140s linear infinite;
+    will-change: transform;
+}
+
+.brandGroup {
+    display: flex;
+    flex-shrink: 0;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    padding: 0 5px;
+}
+
+.title {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #847B77;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.separator {
+    margin: 0 40px;
+    font-size: 1.5rem;
+    color: #d4cfcc;
+}
+
+@keyframes marquee {
+    0% {
+        transform: translate3d(0, 0, 0);
+    }
+
+    100% {
+        transform: translate3d(-50%, 0, 0);
+    }
+}
+
+/* Pause on hover for better UX */
+.slideText:hover .brandScroll {
+    animation-play-state: paused;
+}

@@ -1,0 +1,387 @@
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 100px 20px 60px;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    color: #587c70;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    font-family: 'Inter', sans-serif;
+    color: #847b77;
+    font-size: 1rem;
+    letter-spacing: 1px;
+}
+
+.layout {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+@media (min-width: 768px) {
+    .layout {
+        flex-direction: row;
+    }
+}
+
+.sidebar {
+    flex: 0 0 250px;
+}
+
+.menu {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    background: white;
+    padding: 10px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+@media (min-width: 768px) {
+    .menu {
+        flex-direction: column;
+        padding: 20px;
+    }
+}
+
+.menuItem {
+    flex: 1 1 calc(50% - 10px);
+    padding: 12px 20px;
+    border: none;
+    background: transparent;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    color: #847b77;
+    text-align: left;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.activeItem {
+    background-color: #fcfbf7;
+    color: #587c70;
+    font-weight: 600;
+}
+
+.menuItem:hover:not(.activeItem) {
+    background-color: rgba(88, 124, 112, 0.05);
+    color: #587c70;
+}
+
+.content {
+    flex: 1;
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    min-height: 400px;
+}
+
+@media (min-width: 768px) {
+    .content {
+        padding: 40px;
+    }
+}
+
+.sectionTitle {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    color: #587c70;
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+/* Forms */
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.row {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.fieldGroup {
+    flex: 1;
+    min-width: 200px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.fieldGroup label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #587c70;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.input {
+    padding: 12px 15px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.input:focus {
+    outline: none;
+    border-color: #587c70;
+    box-shadow: 0 0 0 3px rgba(88, 124, 112, 0.1);
+}
+
+.textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.error {
+    color: #d9534f;
+    font-size: 0.8rem;
+}
+
+.submitBtn {
+    margin-top: 10px;
+    padding: 15px;
+    background-color: #587c70;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.submitBtn:hover {
+    background-color: #4a685e;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(88, 124, 112, 0.2);
+}
+
+.submitBtn:disabled {
+    background-color: #b0c4bd;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Addresses */
+.addBtnToggle {
+    width: 100%;
+    padding: 15px;
+    border: 2px dashed #b0c4bd;
+    background: transparent;
+    color: #587c70;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    border-radius: 12px;
+    cursor: pointer;
+    margin-bottom: 30px;
+    transition: all 0.3s ease;
+}
+
+.addBtnToggle:hover {
+    background-color: rgba(88, 124, 112, 0.05);
+    border-color: #587c70;
+}
+
+.addressList {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+}
+
+@media (min-width: 1024px) {
+    .addressList {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.addressCard {
+    padding: 20px;
+    border: 1px solid #f0f0f0;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+.addressCard:hover {
+    border-color: #587c70;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.addressCardHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.addressCardTitle {
+    font-size: 1.1rem;
+    color: #587c70;
+    font-weight: 700;
+}
+
+.deleteBtn {
+    background: none;
+    border: none;
+    color: #d9534f;
+    font-size: 0.9rem;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.addressInfo p {
+    margin: 5px 0;
+    color: #847b77;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.formFooter {
+    display: flex;
+    gap: 15px;
+}
+
+.formFooter .submitBtn {
+    flex: 2;
+}
+
+.cancelBtn {
+    flex: 1;
+    margin-top: 10px;
+    padding: 15px;
+    background-color: transparent;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    color: #847b77;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.cancelBtn:hover {
+    background-color: #f9f9f9;
+}
+
+/* Orders */
+.ordersContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.orderCard {
+    border: 1px solid #f0f0f0;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.orderHeader {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    background: #fcfbf7;
+    padding: 20px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+@media (min-width: 640px) {
+    .orderHeader {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+.orderLabel {
+    font-size: 0.75rem;
+    color: #847b77;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+}
+
+.orderValue {
+    font-weight: 600;
+    color: #587c70;
+}
+
+.status {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+.status_pending {
+    background: #fff4e5;
+    color: #b27b16;
+}
+
+.status_processing {
+    background: #e8f4fd;
+    color: #0b5cab;
+}
+
+.status_shipped {
+    background: #e6f7ed;
+    color: #1e7e34;
+}
+
+.status_delivered {
+    background: #e6f7ed;
+    color: #1e7e34;
+}
+
+.status_cancelled {
+    background: #fdf2f2;
+    color: #b91c1c;
+}
+
+.orderItems {
+    padding: 15px 20px;
+}
+
+.orderItem {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    font-size: 0.95rem;
+    color: #847b77;
+}
+
+.orderItem:not(:last-child) {
+    border-bottom: 1px solid #fafafa;
+}
+
+.itemName {
+    font-weight: 500;
+}
+
+.emptyText,
+.loadingText {
+    text-align: center;
+    padding: 40px 0;
+    color: #847b77;
+    font-style: italic;
+}

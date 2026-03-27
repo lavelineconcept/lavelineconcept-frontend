@@ -1,0 +1,4 @@
+eski renkler
+
+we story     background-color: #d5f1e7;
+footer   background-color: #567C57;

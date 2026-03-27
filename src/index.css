@@ -1,11 +1,20 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 :root {
   font-family: 'Playfair', serif;
   line-height: 1.5;
   font-weight: 400;
 
-  color: #587C70;
-  background-color: #d5f1e7;
-
+  /* color: #587C70; */
+  color: #847B77;
+  background-color: #fff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;

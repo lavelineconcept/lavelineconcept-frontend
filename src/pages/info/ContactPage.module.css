@@ -1,0 +1,124 @@
+.page {
+    padding: 2rem 1rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #744229;
+    line-height: 1.8;
+    box-sizing: border-box;
+}
+
+.content {
+    background-color: #fffcf7;
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(116, 66, 41, 0.05);
+    border: 1px solid rgba(116, 66, 41, 0.1);
+    text-align: center;
+    width: 100%;
+    max-width: 800px;
+    box-sizing: border-box;
+}
+
+.title {
+    font-size: 2.5rem;
+    color: #744229;
+    margin-bottom: 2.5rem;
+    font-weight: 300;
+    letter-spacing: 3px;
+    position: relative;
+}
+
+.title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 1px;
+    background: #744229;
+    margin: 1.5rem auto 0;
+    opacity: 0.5;
+}
+
+.message {
+    font-size: 1.1rem;
+    margin-bottom: 2.5rem;
+    color: #555;
+}
+
+.contactCards {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.2rem;
+    width: 100%;
+}
+
+.contactCard {
+    background-color: #fff;
+    padding: 1.5rem;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.6rem;
+    border: 1px solid rgba(116, 66, 41, 0.1);
+    transition: all 0.3s;
+    width: 100%;
+    max-width: 320px;
+    text-decoration: none;
+    cursor: pointer;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.contactCard:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(116, 66, 41, 0.15);
+}
+
+.cardIcon {
+    color: #744229;
+}
+
+.cardLabel {
+    font-size: 0.85rem;
+    color: #999;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 500;
+}
+
+.cardValue {
+    color: #744229;
+    text-decoration: none;
+    font-weight: 600;
+    transition: opacity 0.3s;
+    word-break: break-all;
+}
+
+.cardValue:hover {
+    opacity: 0.8;
+}
+
+.subtext {
+    margin-top: 3rem;
+    font-size: 0.9rem;
+    color: #888;
+}
+
+/* 768px (Tablet ve üstü) */
+@media (min-width: 768px) {
+    .page {
+        padding: 6rem 1.5rem;
+    }
+
+    .content {
+        padding: 5rem;
+    }
+
+    .contactCards {
+        flex-direction: row;
+        justify-content: center;
+    }
+}
