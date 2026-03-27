@@ -316,7 +316,7 @@ const CheckoutPage = () => {
                                     {formik.values.paymentMethod === "Bank Transfer" && (
                                         <>
                                             <p className={css.ibanInfo}>IBAN: TR40 0001 0090 1042 2796 0050 02</p>
-                                            <p className={css.ibanInfo}>Alıcı: Aleyna Burcu ERTEN</p>
+                                            <p className={css.ibanInfo}>Alıcı: Burcu Aleyna ERTEN</p>
                                         </>
                                     )}
                                 </div>
