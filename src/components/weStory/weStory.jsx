@@ -9,7 +9,7 @@ export default function WeStory() {
         <div className={css.textContainer}>
           <h2 className={css.title}>La Véline Concept</h2>
           <p className={css.description}>
-            La Véline Concept olarak, özel günlerin en anlamlıdetaylarını zarafetle tasarlıyoruz.
+            La Véline Concept olarak, özel günlerin en anlamlı detaylarını zarafetle tasarlıyoruz.
             Her bir hediyelik; özen, estetik ve kaliteli işçilik anlayışıyla hazırlanır.
             <br /><br />
             Amacımız, nişan ve özel davetlerinizde sevdiklerinize sadece bir hediye değil, unutulmaz bir hatıra sunmaktır.
