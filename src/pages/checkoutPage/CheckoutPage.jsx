@@ -21,6 +21,7 @@ const CheckoutPage = () => {
     const isLoggedIn = useSelector(selectIsLoggedIn);
     const user = useSelector(selectUser);
     const [isSuccess, setIsSuccess] = useState(false);
+    const [threeDSHtml, setThreeDSHtml] = useState(null);
 
     const savedAddresses = user?.addresses || [];
     const hasSavedAddresses = savedAddresses.length > 0;
@@ -155,11 +156,14 @@ const CheckoutPage = () => {
                     
                     if (result?.paymentResult?.isThreeDS) {
                         // 3D Secure flow
-                        // Using document.write is the most reliable way to handle a full HTML document 
-                        // returned from Iyzico, as it will execute scripts (like auto-submit).
-                        document.open();
-                        document.write(result.paymentResult.htmlContent);
-                        document.close();
+                        // Iyzico threeDSHtmlContent is Base64 encoded, we must decode it first.
+                        try {
+                            const decodedHtml = atob(result.paymentResult.htmlContent);
+                            setThreeDSHtml(decodedHtml);
+                        } catch (e) {
+                            console.error("Base64 decoding failed:", e);
+                            toast.error("3D Secure verisi çözümlenemedi.");
+                        }
                         return;
                     }
 
@@ -455,6 +459,55 @@ const CheckoutPage = () => {
                     </div>
                 </div>
             </form>
+
+            {/* 3D Secure Modal Overlay */}
+            {threeDSHtml && (
+                <div style={{
+                    position: 'fixed',
+                    top: 0, left: 0, right: 0, bottom: 0,
+                    backgroundColor: 'rgba(0, 0, 0, 0.7)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    zIndex: 9999
+                }}>
+                    <div style={{
+                        background: '#fff',
+                        width: '90%',
+                        maxWidth: '600px',
+                        height: '600px',
+                        borderRadius: '8px',
+                        overflow: 'hidden',
+                        position: 'relative',
+                        display: 'flex',
+                        flexDirection: 'column'
+                    }}>
+                        <div style={{
+                            padding: '15px',
+                            borderBottom: '1px solid #ddd',
+                            display: 'flex',
+                            justifyContent: 'space-between',
+                            alignItems: 'center',
+                            background: '#f9f9f9'
+                        }}>
+                            <h3 style={{ margin: 0, fontSize: '18px' }}>3D Secure Doğrulama</h3>
+                            <button 
+                                onClick={() => setThreeDSHtml(null)}
+                                style={{
+                                    background: 'none', border: 'none', fontSize: '20px', cursor: 'pointer'
+                                }}
+                            >
+                                &times;
+                            </button>
+                        </div>
+                        <iframe 
+                            title="3D Secure"
+                            srcDoc={threeDSHtml}
+                            style={{ width: '100%', height: '100%', border: 'none' }}
+                        />
+                    </div>
+                </div>
+            )}
         </div>
     );
 };
