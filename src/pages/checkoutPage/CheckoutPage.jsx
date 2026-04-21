@@ -39,7 +39,7 @@ const CheckoutPage = () => {
         }
     }, [hasSavedAddresses]);
 
-    const shippingCost = totalPrice > 1500 ? 0 : 135;
+    const shippingCost = totalPrice > 1500 ? 0 : 0; // Geçici olarak 0 yapıldı (normalde 135)
     const giftWrapCost = isGiftWrap ? 50 : 0;
     const finalTotal = totalPrice + shippingCost + giftWrapCost;
 
