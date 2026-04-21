@@ -155,18 +155,11 @@ const CheckoutPage = () => {
                     
                     if (result?.paymentResult?.isThreeDS) {
                         // 3D Secure flow
-                        const formContainer = document.createElement('div');
-                        formContainer.style.display = 'none';
-                        formContainer.innerHTML = result.paymentResult.htmlContent;
-                        document.body.appendChild(formContainer);
-                        
-                        // The HTML content from Iyzico contains a self-submitting form
-                        const form = formContainer.querySelector('form');
-                        if (form) {
-                            form.submit();
-                        } else {
-                            toast.error("3D Secure formu başlatılamadı.");
-                        }
+                        // Using document.write is the most reliable way to handle a full HTML document 
+                        // returned from Iyzico, as it will execute scripts (like auto-submit).
+                        document.open();
+                        document.write(result.paymentResult.htmlContent);
+                        document.close();
                         return;
                     }
 
