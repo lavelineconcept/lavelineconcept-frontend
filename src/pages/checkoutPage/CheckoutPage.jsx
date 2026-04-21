@@ -151,6 +151,25 @@ const CheckoutPage = () => {
             try {
                 const resultAction = await dispatch(createOrder(orderData));
                 if (createOrder.fulfilled.match(resultAction)) {
+                    const result = resultAction.payload.data;
+                    
+                    if (result && result.isThreeDS) {
+                        // 3D Secure flow
+                        const formContainer = document.createElement('div');
+                        formContainer.style.display = 'none';
+                        formContainer.innerHTML = result.htmlContent;
+                        document.body.appendChild(formContainer);
+                        
+                        // The HTML content from Iyzico contains a self-submitting form
+                        const form = formContainer.querySelector('form');
+                        if (form) {
+                            form.submit();
+                        } else {
+                            toast.error("3D Secure formu başlatılamadı.");
+                        }
+                        return;
+                    }
+
                     toast.success("Sipariş başarıyla oluşturuldu!");
                     dispatch(clearCart());
                     setIsSuccess(true);
