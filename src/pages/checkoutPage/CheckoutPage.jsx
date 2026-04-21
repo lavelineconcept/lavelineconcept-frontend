@@ -151,13 +151,13 @@ const CheckoutPage = () => {
             try {
                 const resultAction = await dispatch(createOrder(orderData));
                 if (createOrder.fulfilled.match(resultAction)) {
-                    const result = resultAction.payload.data;
+                    const result = resultAction.payload;
                     
-                    if (result && result.isThreeDS) {
+                    if (result?.paymentResult?.isThreeDS) {
                         // 3D Secure flow
                         const formContainer = document.createElement('div');
                         formContainer.style.display = 'none';
-                        formContainer.innerHTML = result.htmlContent;
+                        formContainer.innerHTML = result.paymentResult.htmlContent;
                         document.body.appendChild(formContainer);
                         
                         // The HTML content from Iyzico contains a self-submitting form
