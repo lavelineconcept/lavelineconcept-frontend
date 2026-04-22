@@ -163,7 +163,7 @@ const CartPage = () => {
                         </div>
                         <div className={css.line}>
                             <span>Kargo</span>
-                            <span>{totalPrice > 1500 ? "Ücretsiz" : "0.00 TL"}</span>
+                            <span>{totalPrice > 1500 ? "Ücretsiz" : "135.00 TL"}</span>
                         </div>
                         {isGiftWrap && (
                             <div className={css.line}>
@@ -173,7 +173,7 @@ const CartPage = () => {
                         )}
                         <div className={`${css.line} ${css.totalLine}`}>
                             <span>Toplam</span>
-                            <span>{(totalPrice + (totalPrice > 1500 ? 0 : 0) + (isGiftWrap ? 50 : 0)).toFixed(2)} TL</span>
+                            <span>{(totalPrice + (totalPrice > 1500 ? 0 : 135) + (isGiftWrap ? 50 : 0)).toFixed(2)} TL</span>
                         </div>
                     </div>
 

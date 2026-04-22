@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { selectCartItems, selectCartTotalPrice, selectIsGiftWrap } from "../../redux/cart/selectors";
@@ -22,6 +22,24 @@ const CheckoutPage = () => {
     const user = useSelector(selectUser);
     const [isSuccess, setIsSuccess] = useState(false);
     const [threeDSHtml, setThreeDSHtml] = useState(null);
+    const location = useLocation();
+
+    useEffect(() => {
+        const queryParams = new URLSearchParams(location.search);
+        const status = queryParams.get("status");
+        const error = queryParams.get("error");
+
+        if (status === "success") {
+            setIsSuccess(true);
+            dispatch(clearCart());
+            // Clear URL parameters to prevent re-triggering on refresh
+            navigate("/checkout", { replace: true });
+        } else if (status === "failed") {
+            toast.error(error || "Ödeme işlemi başarısız oldu.");
+            // Clear URL parameters
+            navigate("/checkout", { replace: true });
+        }
+    }, [location.search, navigate, dispatch]);
 
     const savedAddresses = user?.addresses || [];
     const hasSavedAddresses = savedAddresses.length > 0;
@@ -40,7 +58,7 @@ const CheckoutPage = () => {
         }
     }, [hasSavedAddresses]);
 
-    const shippingCost = totalPrice > 1500 ? 0 : 0; // Geçici olarak 0 yapıldı (normalde 135)
+    const shippingCost = totalPrice > 1500 ? 0 : 135;
     const giftWrapCost = isGiftWrap ? 50 : 0;
     const finalTotal = totalPrice + shippingCost + giftWrapCost;
 
